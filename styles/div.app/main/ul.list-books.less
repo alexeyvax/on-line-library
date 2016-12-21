@@ -1,0 +1,179 @@
+ul.list-books
+{
+	display: block;
+
+	width: 100%;
+	padding: 40px 40px 40px 340px;
+	margin: 0;
+
+	box-sizing: border-box;
+
+	> li.book
+	{
+		vertical-align: top;
+		display: inline-block;
+		overflow: hidden;
+
+		width: 49%;
+		padding: 20px;
+		margin: 0 2% 2% 0;
+		list-style: none;
+		
+		border-radius: 6px;
+		box-sizing: border-box;
+		box-shadow: 0 0 10px lighten(#000000, 80%);
+		
+		&:nth-child(2n)
+		{
+			margin-right: 0;
+		}
+		
+		> div.container
+		{
+			@height: 30px;
+			
+			position: relative;
+			
+			padding: 0;
+			
+			> div.controls
+			{
+				position: absolute;
+				right: 0;
+				bottom: 0;
+				
+				overflow: hidden;
+				
+				width: 130px;
+				height: 0;
+				padding: @height 20px 0 20px;
+				
+				cursor: pointer;
+				background-color: lighten(#35435b, 20%);
+				border-radius: 6px;
+				
+				transition: height .3s;
+				
+				&::before
+				{
+					position: absolute;
+					top: 0;
+					left: 0;
+					
+					visibility: visible;
+					opacity: 1;
+					
+					width: 100%;
+					height: @height;
+					
+					content: 'Настройки';
+					font-size: 14px;
+					text-align: center;
+					line-height: @height;
+					color: #ffffff;
+					
+					transition: visibility .3s, opacity .3s;
+				}
+				
+				&:hover
+				{
+					height: 150px;
+					
+					&::before
+					{
+						visibility: hidden;
+						opacity: 0;
+					}
+				}
+				
+				> button
+				{
+					display: block;
+					
+					width: 100%;
+					padding: 5px 10px;
+					margin-bottom: 10px;
+					
+					color: white;
+					cursor: pointer;
+					
+					opacity: 1;
+					outline: none;
+					background-color: #30D5C8;
+					border: none;
+					border-radius: 6px;
+					
+					transition: opacity .3s;
+					
+					&:last-child
+					{
+						margin-bottom: 0;
+					}
+					
+					&:hover
+					{
+						background-color: darken(#30D5C8, 10%);
+					}
+					
+					&:disabled
+					{
+						opacity: .5;
+						pointer-events: none;
+					}
+				}
+			}
+			
+			> strong
+			{
+				display: block;
+				margin: 0 0 10px 0;
+			}
+			
+			> input
+			{
+				display: block;
+				width: 100%;
+				max-width: 300px;
+				margin: 0 0 20px 0;
+				box-sizing: border-box;
+			}
+			
+			> p
+			{
+				width: 100%;
+				padding: 0;
+				margin: 0 0 20px 0;
+				font-size: 16px;
+				color: grey;
+				line-height: 1.2;
+			}
+
+			> img
+			{
+				width: 140px;
+				height: 200px;
+				margin-bottom: 20px;
+
+				object-fit: contain;
+			}
+			
+			> a.download
+			{
+				color: lighten(blue, 20%);
+				text-decoration: none;
+				transition: color .3s;
+				
+				&:hover
+				{
+					color: lighten(blue, 10%);
+				}
+			}
+		}
+	}
+	
+	> li.empty
+	{
+		display: block;
+		list-style: none;
+	}
+}

@@ -1,0 +1,44 @@
+ul.list-names-books
+{
+	position: absolute;
+	top: 130px;
+	left: 0;
+	
+	display: block;
+	overflow-x: hidden;
+	overflow-y: scroll;
+
+	width: 300px;
+	height: 100vh;
+	padding: 40px;
+	margin: 0;
+
+	background-color: #dfdfdf;
+	box-sizing: border-box;
+	
+	&.sticky
+	{
+		position: fixed;
+		top: 0;
+		left: 0;
+	}
+	
+	> li
+	{
+		display: block;
+		margin-bottom: 20px;
+		list-style: none;
+		
+		> a
+		{
+			color: grey;
+			text-decoration: none;
+			transition: color .3s;
+			
+			&:hover
+			{
+				color: darken(grey, 30%);
+			}
+		}
+	}
+}

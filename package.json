@@ -1,0 +1,45 @@
+{
+  "name": "library",
+  "version": "1.0.0",
+  "description": "on-line library",
+  "author": "Alexey Vakhrushev <Alexeyvax1990@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/alexeyvax/on-line-library",
+  "main": "server.js",
+  "scripts": {
+    "start": "npm run build && npm run styles && node server.js ",
+    "dev": "NODE_ENV=development webpack-dev-server --progress",
+    "build": "NODE_ENV=production webpack --progress",
+		"styles": "gulp styles"
+  },
+  "keywords": [
+    "react",
+    "express",
+		"handlebars",
+    "webpack"
+  ],
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "express-handlebars": "^3.0.0",
+    "formidable": "^1.0.17",
+    "fs": "0.0.2",
+    "path": "^0.12.7",
+    "pdf-image": "^1.1.0",
+    "react": "^15.4.1",
+    "react-dom": "^15.4.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.18.2",
+    "babel-loader": "^6.2.8",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-react": "^6.16.0",
+    "babel-preset-stage-0": "^6.16.0",
+    "gulp-clean-css": "^2.2.2",
+    "gulp-concat-css": "^2.3.0",
+    "gulp-less": "^3.3.0",
+    "gulp-notify": "^2.2.0",
+    "gulp-rename": "^1.2.2",
+    "webpack": "^1.13.3"
+  }
+}

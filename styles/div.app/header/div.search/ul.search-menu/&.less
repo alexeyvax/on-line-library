@@ -1,0 +1,97 @@
+ul.search-menu
+{
+	@background: lighten(#35435b, 10%);
+	
+	position: absolute;
+	top: 70px;
+	right: 0;
+	
+	display: inline-block;
+	visibility: hidden;
+	opacity: 0;
+	
+	width: 200px;
+	padding: 20px;
+	margin: 0;
+	text-align: left;
+	
+	background-color: @background;
+	border-radius: 6px;
+	
+	transition: visibility .3s, opacity .3s;
+	
+	&::before
+	{
+		position: absolute;
+		top: -20px;
+		right: 30px;
+		
+		width: 0;
+		height: 0;
+		
+		content: '';
+		
+		border: 10px solid transparent;
+		border-bottom: 10px solid @background;
+	}
+	
+	> li
+	{
+		display: block;
+		list-style: none;
+
+		&.radio-group
+		{
+			> input
+			{
+				position: absolute;
+				overflow: hidden;
+				opacity: 0;
+				width: 1px;
+				height: 1px;
+			}
+
+			> label
+			{
+				position: relative;
+				overflow: visible;
+				width: auto;
+				height: auto;
+				font-size: 12px;
+				opacity: 1;
+			}
+		}
+
+		> input
+		{
+			width: 200px;
+			padding: 6px 10px;
+
+			font-size: 14px;
+
+			border: 1px solid lighten(purple, 40%);
+			border-radius: 6px;
+			box-sizing: border-box;
+		}
+
+		> label
+		{
+			position: absolute;
+			overflow: hidden;
+			width: 1px;
+			height: 1px;
+			font-size: 12px;
+			opacity: 0;
+		}
+		
+		> span
+		{
+			display: block;
+			
+			margin: 20px 0 10px 0;
+			font-size: 14px;
+			text-align: center;
+			color: #ffffff;
+		}
+	}
+}
