@@ -91,10 +91,10 @@ const routeParams = {
 libRoute.route( app, routeParams );
 
 app.listen(
-	3003,
+	3004,
 	()=>
 	{
-		console.log( 'Server started: http://localhost:3003/' );
+		console.log( 'Server started: http://localhost:3004/' );
 	}
 );
 

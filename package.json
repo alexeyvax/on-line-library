@@ -1,6 +1,6 @@
 {
   "name": "library",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "on-line library",
   "author": "Alexey Vakhrushev <Alexeyvax1990@gmail.com>",
   "license": "MIT",
@@ -10,16 +10,17 @@
     "start": "npm run build && npm run styles && node server.js ",
     "dev": "NODE_ENV=development webpack-dev-server --progress",
     "build": "NODE_ENV=production webpack --progress",
-		"styles": "gulp styles"
+    "styles": "gulp styles"
   },
   "keywords": [
     "react",
     "express",
-		"handlebars",
+    "handlebars",
     "webpack"
   ],
   "dependencies": {
     "body-parser": "^1.15.2",
+    "evemitter-alexeyvax": "^1.0.5",
     "express": "^4.14.0",
     "express-handlebars": "^3.0.0",
     "formidable": "^1.0.17",
