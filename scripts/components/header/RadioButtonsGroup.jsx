@@ -19,6 +19,11 @@ class RadioButtonsGroup extends React.Component
 		{
 			this.props.handleAddBookLangChange( event.target.value );
 		}
+		
+		if ( this.props.handleChangeBookLangChange )
+		{
+			this.props.handleChangeBookLangChange( event.target.value );
+		}
 
 		if ( this.props.handleSearchLangChange )
 		{

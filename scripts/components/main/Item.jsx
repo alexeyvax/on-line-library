@@ -1,5 +1,7 @@
 import React from 'react';
 import Controls from './controls/Controls.jsx';
+import RadioButtonsGroup from '../header/RadioButtonsGroup.jsx';
+import langList from '../../lib/langList';
 import ajax from '../../lib/ajax';
 import { observable } from '../App.jsx'
 
@@ -13,7 +15,10 @@ class Item extends React.Component
 	{
 		super( props );
 		
-		this.state = { content: props.content };
+		this.state = {
+			content: props.content
+		};
+		
 		this.changeElements = [];
 	}
 	
@@ -81,6 +86,14 @@ class Item extends React.Component
 		);
 	}
 	
+	/*handleLangChange( lang )
+	{
+		console.log( lang );
+		this.setState({
+			lang: lang
+		});
+	}*/
+	
 	render()
 	{
 		const props = this.props.list;
@@ -96,6 +109,7 @@ class Item extends React.Component
 			this.changeElements = [
 				<p ref="authorP">{author}</p>,
 				<p ref="nameP">{name}</p>,
+				// <p ref="langP">{lang}</p>,
 				<p ref="descriptionP">{description}</p>
 			];
 		}
@@ -104,6 +118,9 @@ class Item extends React.Component
 			this.changeElements = [
 				<input type="text" name="author" defaultValue={author} ref="authorInput" />,
 				<input type="text" name="name" defaultValue={name} ref="nameInput" />,
+				// <RadioButtonsGroup group="changeBook-lang" radios={langList} checked={lang} 
+				// 	handleChangeBookLangChange={this.handleLangChange.bind(this)} 
+				// />,
 				<input type="text" name="description" defaultValue={description} ref="descriptionInput" />
 			];
 		}
@@ -117,7 +134,7 @@ class Item extends React.Component
 				{this.changeElements[1]}
 				<img src={imageSrc} />
 				<strong>Язык книги:</strong>
-				<p>{lang}</p>
+				/*{this.changeElements[2]}*/
 				<strong>Описание:</strong>
 				{this.changeElements[2]}
 				<a className="download" href={link} download>Скачать</a>
@@ -132,7 +149,9 @@ class Item extends React.Component
 	}
 };
 
-Item.defaultProps = { content: 'normal' };
+Item.defaultProps = {
+	content: 'normal'
+};
 
 export {
 	Item as default,
