@@ -1,16 +1,19 @@
 ul.list-names-books
 {
-	position: absolute;
-	top: 130px;
+	@header-height: 130px;
+	
+	position: fixed;
+	top: @header-height;
 	left: 0;
 	
 	display: block;
 	overflow-x: hidden;
 	overflow-y: scroll;
+	-webkit-overflow-scrolling: touch;
 
 	width: 300px;
-	height: 100vh;
-	padding: 40px;
+	height: calc(~"100% - "@header-height);
+	padding: 50px 40px 40px 40px;
 	margin: 0;
 
 	background-color: #dfdfdf;

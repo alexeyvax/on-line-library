@@ -127,14 +127,18 @@ class Item extends React.Component
 		
 		return (
 			<div className="container">
-				<a name={name}></a>
+				<a className="anhor" id={name}></a>
+				<img src={imageSrc} />
 				<strong>Автор:</strong>
 				{this.changeElements[0]}
+				<br />
 				<strong>Название:</strong>
 				{this.changeElements[1]}
-				<img src={imageSrc} />
+				<br />
 				<strong>Язык книги:</strong>
-				/*{this.changeElements[2]}*/
+				<p>{lang}</p>
+				<br />
+				{/*{this.changeElements[2]}*/}
 				<strong>Описание:</strong>
 				{this.changeElements[2]}
 				<a className="download" href={link} download>Скачать</a>

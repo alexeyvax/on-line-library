@@ -1,6 +1,8 @@
 header
 {
-	position: relative;
+	position: fixed;
+	top: 0;
+	left: 0;
 	z-index: 1;
 	
 	width: 100%;
@@ -11,4 +13,22 @@ header
 
 	background-color: #d0d0d0;
 	box-sizing: border-box;
+	
+	&::before
+	{
+		@heigth: 50px;
+		
+		position: absolute;
+		bottom: -@heigth;
+		left: 0;
+		z-index: 1;
+		
+		width: 100%;
+		height: @heigth;
+		
+		content: '';
+		
+		backface-visibility: hidden;
+		background: linear-gradient( to bottom, #d0d0d0, transparent );
+	}
 }

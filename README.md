@@ -16,15 +16,29 @@ On-line library не имеет мобильной версии, т.к. изна
 
 
 
+## Пример использования
+
+###Как загрузить книгу
+![Example upload](https://github.com/alexeyvax/on-line-library/blob/master/gif-example/upload.gif)
+
+###Как отредактировать
+![Example change](https://github.com/alexeyvax/on-line-library/blob/master/gif-example/change.gif)
+
+###Как найти нужную книгу
+![Example search](https://github.com/alexeyvax/on-line-library/blob/master/gif-example/search.gif)
+
+###Как удалить книгу
+![Example remove](https://github.com/alexeyvax/on-line-library/blob/master/gif-example/remove.gif)
+
 ## Установка
 
 Для установки себе на компьютер выполните в терминале команду
 
-    npm install
+	npm install
 
 Для запуска приложения выполните
 
-    npm start
+	npm start
 
 и перейдите по адресу <http://localhost:3003/>
 
@@ -40,7 +54,7 @@ On-line library не имеет мобильной версии, т.к. изна
 
 
 
-В версии 1.0.1 добавится возможность перетаскивать книгу для загрузки.
+В следующей версии добавится возможность перетаскивать книгу для загрузки.
 
 А также в настоящее время ведётся разработка полноценного настольного приложения 
 On-line library с использованием electron.

@@ -54,7 +54,7 @@ class Controls extends React.Component
 		return (
 			<div className="controls">
 				<button type="button" className="buttonChange" onClick={this.change.bind( this )}>
-					Редактировать
+					Изменить
 				</button>
 				<button type="button" className="buttonRemove" onClick={this.remove.bind( this )}>
 					Удалить
