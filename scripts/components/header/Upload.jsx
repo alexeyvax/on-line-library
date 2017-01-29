@@ -95,17 +95,17 @@ class Upload extends React.Component
 						/>
 						<label>Загрузить новую книгу в формате PDF</label>
 						<button type="button" ref="uploadButton" onClick={ this.callUploadInput.bind(this)}>
-							Выбрать
+							Выбрать *
 						</button>
 					</li><li>
-						<input type="text" name="author" placeholder="Автор книги" ref="author" />
-						<label>Введите автора книги</label>
+						<input type="text" name="author" placeholder="Автор книги *" ref="author" />
+						<label>Введите автора книги *</label>
 					</li><li>
-						<input type="text" name="name" placeholder="Название книги" ref="name" />
-						<label>Введите название книги</label>
+						<input type="text" name="name" placeholder="Название книги *" ref="name" />
+						<label>Введите название книги *</label>
 					</li><li>
-						<input type="text" name="description" placeholder="Описание книги" ref="description" />
-						<label>Введите описание книги</label>
+						<input type="text" name="description" placeholder="Описание книги *" ref="description" />
+						<label>Введите описание книги *</label>
 					</li><li className="radio-group">
 						<span>Выберите язык книги</span>
 						<RadioButtonsGroup group="addBook-lang" radios={langList} checked={this.state.lang} 
