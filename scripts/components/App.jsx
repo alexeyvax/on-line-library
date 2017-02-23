@@ -28,6 +28,17 @@ class App extends React.PureComponent
 		this.searchIsEmpty = false;
 	}
 	
+	render()
+	{
+		return (
+			<section>
+				<Header />
+				<List ref="list" data={this.state.list} searchIsEmpty={this.searchIsEmpty}/>
+				<Main data={this.state.list} searchIsEmpty={this.searchIsEmpty}/>
+			</section>
+		);
+	}
+	
 	componentDidMount()
 	{
 		/**
@@ -185,24 +196,13 @@ class App extends React.PureComponent
 		
 		new Observer( 4, this.props.observable, 'changeBook' );
 	}
-
+	
 	componentWillUnmount()
 	{
 		this.props.observable.removeListener( 'addBook' );
 		this.props.observable.removeListener( 'searchBook' );
 		this.props.observable.removeListener( 'removeBook' );
 		this.props.observable.removeListener( 'changeBook' );
-	}
-	
-	render()
-	{
-		return (
-			<section>
-				<Header />
-				<List ref="list" data={this.state.list} searchIsEmpty={this.searchIsEmpty}/>
-				<Main data={this.state.list} searchIsEmpty={this.searchIsEmpty}/>
-			</section>
-		);
 	}
 }
 
