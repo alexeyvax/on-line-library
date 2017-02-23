@@ -6,9 +6,8 @@ import ajax from '../../lib/ajax';
 import { observable } from '../App.jsx'
 
 /**
- * Класс Item формирует и создаёт книгу
+ * Класс Item формирует и создаёт плитку с книгой и информацией о ней
  */
-
 class Item extends React.Component
 {
 	constructor( props )
@@ -22,6 +21,24 @@ class Item extends React.Component
 		this.changeElements = [];
 	}
 	
+	shouldComponentUpdate(nextProps, nextState)
+	{
+		if (this.props.data !== nextProps.data)
+		{
+			return true;
+		}
+		if (this.state.content !== nextState.content)
+		{
+			return true;
+		}
+		
+		return false;
+	}
+	/**
+	 * Сохранение изменений данных о книге
+	 * 
+	 * @param event
+	 */
 	save( event )
 	{
 		const authorInput = this.refs.authorInput,
@@ -53,21 +70,33 @@ class Item extends React.Component
 			}
 		);
 	}
-	
+	/**
+	 * Начать изменять данные о книге
+	 * 
+	 * @param event
+	 */
 	change( event )
 	{
 		this.setState({
 			content: 'change'
 		});
 	}
-	
+	/**
+	 * Отменить изменения
+	 * 
+	 * @param event
+	 */
 	disable( event )
 	{
 		this.setState({
 			content: 'normal'
 		});
 	}
-	
+	/**
+	 * Удалить плитку с книгой
+	 * 
+	 * @param event
+	 */
 	remove( event )
 	{
 		const itemId = this.props.itemId;

@@ -3,6 +3,9 @@
 node_modules
 public
 
+books/*
+backend/listBooks.json
+
 __tests__
 .vscode
 

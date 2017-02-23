@@ -20,14 +20,20 @@ class Upload extends React.Component
 			visibility: props.visibility,
 		};
 	}
-	
+	/**
+	 * Вызов окна для загрузки новой книги
+	 */
 	callUploadInput()
 	{
 		const uploadInput = ReactDOM.findDOMNode( this.refs.uploadInput );
 		
 		uploadInput.click();
 	}
-	
+	/**
+	 * Загрузка новой книги
+	 * 
+	 * @param event
+	 */
 	dataSubmit( event )
 	{
 		event.preventDefault();
@@ -74,7 +80,11 @@ class Upload extends React.Component
 			alert( 'Заполните все обязательные поля' );
 		}
 	}
-
+	/**
+	 * Изменение языка при загрузке новой книги
+	 * 
+	 * @param lang {String} - Язык книги
+	 */
 	handleLangChange( lang )
 	{
 		this.setState({

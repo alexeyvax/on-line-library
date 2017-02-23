@@ -6,7 +6,7 @@ import ajax from '../../../lib/ajax';
  * Класс Controls кнопки управления
  */
 
-class Controls extends React.Component
+class Controls extends React.PureComponent
 {
 	constructor( props )
 	{
@@ -16,7 +16,11 @@ class Controls extends React.Component
 			visibility: props.visibility
 		};
 	}
-	
+	/**
+	 * Сохранение изменений
+	 * 
+	 * @param event
+	 */
 	save( event )
 	{
 		this.setState({
@@ -25,7 +29,11 @@ class Controls extends React.Component
 		
 		this.props.saveElements( event );
 	}
-	
+	/**
+	 * Изменение информации о книге
+	 * 
+	 * @param event
+	 */
 	change( event )
 	{
 		this.setState({
@@ -34,7 +42,11 @@ class Controls extends React.Component
 		
 		this.props.changeElements( event );
 	}
-	
+	/**
+	 * Отмена изменений
+	 * 
+	 * @param event
+	 */
 	disable( event )
 	{
 		this.setState({
@@ -43,7 +55,11 @@ class Controls extends React.Component
 		
 		this.props.disableElements( event );
 	}
-	
+	/**
+	 * Удаление книги
+	 * 
+	 * @param event
+	 */
 	remove( event )
 	{
 		this.props.removeElements( event );

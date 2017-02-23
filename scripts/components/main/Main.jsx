@@ -12,19 +12,29 @@ class Main extends React.Component
 		super( props );
 	}
 	
+	shouldComponentUpdate(nextProps, nextState)
+	{
+		if (this.props.data !== nextProps.data)
+		{
+			return true;
+		}
+		
+		return false;
+	}
+	
 	render()
 	{
 		const list = this.props.data;
 		const searchIsEmpty = this.props.searchIsEmpty;
 		let bookTemplate;
-
+		
 		if ( list.length )
 		{
 			bookTemplate = list.map(
 				( item, index ) =>
 				{
 					return (
-						<li id={item.id} className="book" key={index}>
+						<li id={item.id} className="book" key={item.id}>
 							<Item list={item} itemId={item.id} />
 						</li>
 					)

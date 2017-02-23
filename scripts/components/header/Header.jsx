@@ -7,7 +7,7 @@ import Upload from './Upload.jsx';
  * Класс Header формирует шапку приложения
  */
 
-class Header extends React.Component
+class Header extends React.PureComponent
 {
 	render()
 	{

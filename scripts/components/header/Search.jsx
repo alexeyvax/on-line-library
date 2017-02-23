@@ -15,7 +15,9 @@ class Search extends React.Component
 		super( props );
 		this.state = { lang: props.lang };
 	}
-
+	/**
+	 * Запуск поиска по введённым параметрам
+	 */
 	handleChange()
 	{
 		const author = ReactDOM.findDOMNode( this.refs.searchAuthor ),
@@ -25,7 +27,11 @@ class Search extends React.Component
 			
 		observable.emit( 'searchBook', authorValue, nameValue, this.state.lang );
 	}
-
+	/**
+	 * Запуск сортировки книг по языку
+	 * 
+	 * @param lang {String} - Язык книги
+	 */
 	chooseLang( lang )
 	{
 		const author = ReactDOM.findDOMNode( this.refs.searchAuthor ),

@@ -7,20 +7,30 @@ import Item from './Item';
 
 class List extends React.Component
 {
+	shouldComponentUpdate(nextProps, nextState)
+	{
+		if (this.props.data !== nextProps.data)
+		{
+			return true;
+		}
+		
+		return false;
+	}
+	
 	render()
 	{
 		const list = this.props.data;
 		const searchIsEmpty = this.props.searchIsEmpty;
 		let bookTemplate;
 		let countBook;
-
+		
 		if ( list.length )
 		{
 			bookTemplate = list.map(
-				( item, index ) =>
+				( item ) =>
 				{
 					return (
-						<li className="book" key={index}>
+						<li className="book" key={item.id}>
 							<Item list={item} />
 						</li>
 					)

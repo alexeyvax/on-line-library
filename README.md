@@ -40,7 +40,7 @@ On-line library не имеет мобильной версии, т.к. изна
 
 	npm start
 
-и перейдите по адресу <http://localhost:3003/>
+и перейдите по адресу <http://localhost:3004/>
 
 
 

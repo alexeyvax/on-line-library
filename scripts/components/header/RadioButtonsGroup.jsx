@@ -12,7 +12,11 @@ class RadioButtonsGroup extends React.Component
 	{
 		super( props );
 	}
-
+	/**
+	 * Определение для чего происходит смена языка
+	 * 
+	 * @param event
+	 */
 	handleLangChange( event )
 	{
 		if ( this.props.handleAddBookLangChange )

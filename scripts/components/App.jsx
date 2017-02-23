@@ -9,25 +9,37 @@ import Main from './main/Main.jsx';
 const observable = new EventEmitter();
 const data = window.__PRELOADED_STATE__.replace(/&quot;/g, '"'); // Использовать при handlebars
 const listBook = JSON.parse( data.replace(/^["']|["']$/g, '') ); // обрезаю кавычки в начале и в конце
-let list = listBook;
-let searchIsEmpty = false;
 
 /**
  * Класс App с которого начинается приложение
  */
-
-class App extends React.Component
+class App extends React.PureComponent
 {
+	constructor( props )
+	{
+		super( props );
+		this.state = {
+			list: listBook,
+			search: listBook
+		};
+		
+		/** Присутствуют ли значения для поиска? */
+		this.searchIsEmpty = false;
+	}
+	
 	componentDidMount()
 	{
 		/**
 		 * Добавление книги в библиотеку
+		 * 
+		 * @param {Object} - Новая созданная книга
 		 */
 		observable.addListener( 'addBook', ( item ) =>
 		{
-			const newBook = list.push( item );
-			
-			this.setState({ list: newBook });
+			this.setState( prevState => ({
+				list: [...prevState.list, item],
+				search: [...prevState.list, item]
+			}));
 		});
 		
 		new Observer( 1, observable, 'addBook' );
@@ -35,120 +47,139 @@ class App extends React.Component
 		/**
 		 * Поиск книги по автору и названию,
 		 * а так же сортировка по языку
+		 * 
+		 * @param author {String} - Строка с автором книги
+		 * @param name {String} - Строка с названием книги
+		 * @param lang {String} - Строка с языком книги
 		 */
 		observable.addListener( 'searchBook', ( author, name, lang ) =>
 		{
-			list = listBook;
-
+			/** Список по которому проходит поиск(мутирующий) */
+			let filterList = this.state.search;
+			/** Приведение в нижний регистр */
 			const searchAuthor = author.trim().toLowerCase();
 			const searchName = name.trim().toLowerCase();
 			
-			if ( searchAuthor.length > 0
-				&& searchName.length > 0 )
+			const authorLength = searchAuthor.length;
+			const nameLength = searchName.length;
+			
+			switch( true )
 			{
-				searchIsEmpty = false;
-				
-				list = list.filter(( item ) =>
-				{
-					if ( item.author.toLowerCase().match( searchAuthor )
-						&& item.name.toLowerCase().match( searchName ))
+				/** Если заполнено имя автора и название книги */
+				case authorLength > 0 && nameLength > 0:
+					this.searchIsEmpty = false;
+					
+					filterList = filterList.filter(( item ) =>
 					{
-						if ( lang !== 'any' )
+						if ( item.author.toLowerCase().match( searchAuthor )
+							&& item.name.toLowerCase().match( searchName ))
 						{
-							return item.lang === lang;
+							if ( lang !== 'any' )
+							{
+								return item.lang === lang;
+							}
+
+							return item;
 						}
-
-						return item;
-					}
-				});
-
-				if ( list.length <= 0 )
-				{
-					searchIsEmpty = true;
-				}
-			}
-			else if ( searchAuthor.length > 0
-				&& !searchName.length > 0 )
-			{
-				searchIsEmpty = false;
-				
-				list = list.filter(( item ) =>
-				{
-					if ( item.author.toLowerCase().match( searchAuthor ))
-					{
-						if ( lang !== 'any' )
-						{
-							return item.lang === lang;
-						}
-
-						return item;
-					}
-				});
-
-				if ( list.length <= 0 )
-				{
-					searchIsEmpty = true;
-				}
-			}
-			else if ( !searchAuthor.length > 0
-				&& searchName.length > 0 )
-			{
-				searchIsEmpty = false;
-				
-				list = list.filter(( item ) =>
-				{
-					if ( item.name.toLowerCase().match( searchName ))
-					{
-						if ( lang !== 'any' )
-						{
-							return item.lang === lang;
-						}
-
-						return item;
-					}
-				});
-
-				if ( list.length <= 0 )
-				{
-					searchIsEmpty = true;
-				}
-			}	
-			else
-			{
-				if ( lang !== 'any' )
-				{
-					list = list.filter(( item ) =>
-					{
-						return item.lang === lang;
 					});
-				}
+					
+					if ( filterList.length <= 0 )
+					{
+						this.searchIsEmpty = true;
+					}
+					
+					break;
+				/** Если только заполнено имя автора */
+				case authorLength > 0 && !nameLength > 0:
+					this.searchIsEmpty = false;
+					
+					filterList = filterList.filter(( item ) =>
+					{
+						if ( item.author.toLowerCase().match( searchAuthor ))
+						{
+							if ( lang !== 'any' )
+							{
+								return item.lang === lang;
+							}
+
+							return item;
+						}
+					});
+					
+					if ( filterList.length <= 0 )
+					{
+						this.searchIsEmpty = true;
+					}
+					
+					break;
+				/** Если только заполнено название книги */
+				case !authorLength > 0 && nameLength > 0:
+					this.searchIsEmpty = false;
+					
+					filterList = filterList.filter(( item ) =>
+					{
+						if ( item.name.toLowerCase().match( searchName ))
+						{
+							if ( lang !== 'any' )
+							{
+								return item.lang === lang;
+							}
+
+							return item;
+						}
+					});
+					
+					if ( filterList.length <= 0 )
+					{
+						this.searchIsEmpty = true;
+					}
+					
+					break;
+				/** Сортировка по языку книги 
+				 * и не заполнены ни имя автора ни название книги */
+				default:
+					if ( lang !== 'any' )
+					{
+						filterList = filterList.filter(( item ) =>
+						{
+							return item.lang === lang;
+						});
+					}
 			}
 			
-			this.setState({ list: list });
+			this.setState({ list: filterList });
 		});
-
+		
 		new Observer( 2, observable, 'searchBook' );
 		
 		/**
 		 * Удаление книги
+		 * 
+		 * @param index {Number} - индекс удаляемой книги
 		 */
-		observable.addListener( 'removeBook', ( newListlistBook ) =>
+		observable.addListener( 'removeBook', ( [index] ) =>
 		{
-			list = newListlistBook;
-			
-			this.setState({ list: list });
+			this.setState( prevState => ({
+				list: [...prevState.list.filter((_, i) => i !== index)],
+				search: [...prevState.list.filter((_, i) => i !== index)]
+			}));
 		});
 		
 		new Observer( 3, observable, 'removeBook' );
 		
 		/**
 		 * Изменение информации о книге
+		 * 
+		 * @param index {Number} - индекс изменяемой книги
+		 * @param needle {Object} - обновлённая книга
 		 */
-		observable.addListener( 'changeBook', ( newListlistBook ) =>
+		observable.addListener( 'changeBook', ( [index, needle] ) =>
 		{
-			list = newListlistBook;
-			
-			this.setState({ list: list });
+			this.setState( prevState => ({
+					list: [...prevState.list.slice( 0, index ), needle, ...prevState.list.slice( index + 1 )],
+					search: [...prevState.list.slice( 0, index ), needle, ...prevState.list.slice( index + 1 )]
+				})
+			);
 		});
 		
 		new Observer( 4, observable, 'changeBook' );
@@ -167,8 +198,8 @@ class App extends React.Component
 		return (
 			<section>
 				<Header />
-				<List ref="list" data={list} searchIsEmpty={searchIsEmpty}/>
-				<Main data={list} searchIsEmpty={searchIsEmpty}/>
+				<List ref="list" data={this.state.list} searchIsEmpty={this.searchIsEmpty}/>
+				<Main data={this.state.list} searchIsEmpty={this.searchIsEmpty}/>
 			</section>
 		);
 	}

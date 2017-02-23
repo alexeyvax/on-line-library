@@ -6,6 +6,21 @@ import React from 'react';
 
 class Item extends React.Component
 {
+	constructor( props )
+	{
+		super( props );
+	}
+	
+	shouldComponentUpdate( nextProps, nextState )
+	{
+		if (this.props.list !== nextProps.list)
+		{
+			return true;
+		}
+		
+		return false;
+	}
+	
 	render()
 	{
 		const props = this.props.list;
