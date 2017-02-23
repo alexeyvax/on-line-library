@@ -8,7 +8,7 @@ import Main from './main/Main.jsx';
 
 const observable = new EventEmitter();
 const data = window.__PRELOADED_STATE__.replace(/&quot;/g, '"'); // Использовать при handlebars
-const listBook = JSON.parse( data.replace(/^["']|["']$/g, '') ); // обрезаю кавычки в начале и в конце
+const listBooks = JSON.parse( data.replace(/^["']|["']$/g, '')); // обрезаю кавычки в начале и в конце
 
 /**
  * Класс App с которого начинается приложение
@@ -18,9 +18,10 @@ class App extends React.PureComponent
 	constructor( props )
 	{
 		super( props );
+		
 		this.state = {
-			list: listBook,
-			search: listBook
+			list: this.props.listBooks,
+			search: this.props.listBooks
 		};
 		
 		/** Присутствуют ли значения для поиска? */
@@ -34,7 +35,7 @@ class App extends React.PureComponent
 		 * 
 		 * @param {Object} - Новая созданная книга
 		 */
-		observable.addListener( 'addBook', ( item ) =>
+		this.props.observable.addListener( 'addBook', ( item ) =>
 		{
 			this.setState( prevState => ({
 				list: [...prevState.list, item],
@@ -42,7 +43,7 @@ class App extends React.PureComponent
 			}));
 		});
 		
-		new Observer( 1, observable, 'addBook' );
+		new Observer( 1, this.props.observable, 'addBook' );
 
 		/**
 		 * Поиск книги по автору и названию,
@@ -52,7 +53,7 @@ class App extends React.PureComponent
 		 * @param name {String} - Строка с названием книги
 		 * @param lang {String} - Строка с языком книги
 		 */
-		observable.addListener( 'searchBook', ( author, name, lang ) =>
+		this.props.observable.addListener( 'searchBook', ( author, name, lang ) =>
 		{
 			/** Список по которому проходит поиск(мутирующий) */
 			let filterList = this.state.search;
@@ -150,14 +151,14 @@ class App extends React.PureComponent
 			this.setState({ list: filterList });
 		});
 		
-		new Observer( 2, observable, 'searchBook' );
+		new Observer( 2, this.props.observable, 'searchBook' );
 		
 		/**
 		 * Удаление книги
 		 * 
 		 * @param index {Number} - индекс удаляемой книги
 		 */
-		observable.addListener( 'removeBook', ( [index] ) =>
+		this.props.observable.addListener( 'removeBook', ( [index] ) =>
 		{
 			this.setState( prevState => ({
 				list: [...prevState.list.filter((_, i) => i !== index)],
@@ -165,7 +166,7 @@ class App extends React.PureComponent
 			}));
 		});
 		
-		new Observer( 3, observable, 'removeBook' );
+		new Observer( 3, this.props.observable, 'removeBook' );
 		
 		/**
 		 * Изменение информации о книге
@@ -173,7 +174,7 @@ class App extends React.PureComponent
 		 * @param index {Number} - индекс изменяемой книги
 		 * @param needle {Object} - обновлённая книга
 		 */
-		observable.addListener( 'changeBook', ( [index, needle] ) =>
+		this.props.observable.addListener( 'changeBook', ( [index, needle] ) =>
 		{
 			this.setState( prevState => ({
 					list: [...prevState.list.slice( 0, index ), needle, ...prevState.list.slice( index + 1 )],
@@ -182,15 +183,15 @@ class App extends React.PureComponent
 			);
 		});
 		
-		new Observer( 4, observable, 'changeBook' );
+		new Observer( 4, this.props.observable, 'changeBook' );
 	}
 
 	componentWillUnmount()
 	{
-		observable.removeListener( 'addBook' );
-		observable.removeListener( 'searchBook' );
-		observable.removeListener( 'removeBook' );
-		observable.removeListener( 'changeBook' );
+		this.props.observable.removeListener( 'addBook' );
+		this.props.observable.removeListener( 'searchBook' );
+		this.props.observable.removeListener( 'removeBook' );
+		this.props.observable.removeListener( 'changeBook' );
 	}
 	
 	render()
@@ -206,7 +207,7 @@ class App extends React.PureComponent
 }
 
 ReactDOM.render(
-	<App />,
+	<App listBooks={listBooks} observable={observable} />,
 	document.getElementById( 'app' )
 );
 
