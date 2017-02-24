@@ -72,6 +72,12 @@ class RadioButtonsGroup extends React.Component
 	}
 };
 
+RadioButtonsGroup.propTypes = {
+	group: React.PropTypes.string.isRequired,
+	radios: React.PropTypes.array.isRequired,
+	checked: React.PropTypes.string.isRequired
+};
+
 export {
 	RadioButtonsGroup as default,
 }

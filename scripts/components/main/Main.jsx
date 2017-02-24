@@ -62,7 +62,8 @@ class Main extends React.Component
 };
 
 Main.propTypes = {
-	data: React.PropTypes.array.isRequired
+	data: React.PropTypes.array.isRequired,
+	searchIsEmpty: React.PropTypes.bool.isRequired
 };
 
 export {

@@ -1,5 +1,6 @@
 ul.list-books
 {
+	@top: 130px;
 	@padding-card: 20px;
 	@image-width: 140px;
 	@height-button: 30px;
@@ -7,13 +8,20 @@ ul.list-books
 	@clr-button-text: #ffffff;
 	@background-color-controls: lighten(#35435b, 20%);
 	
+	position: absolute;
+	top: @top;
+	z-index: 1;
+	
 	display: flex;
+	overflow-x: hidden;
+	overflow-y: scroll;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: flex-start;
 	align-items: center;
 	
 	width: 100%;
-	padding: 180px 40px 40px 340px;
+	height: ~"calc(100% - @{top})";
+	padding: 50px 40px 40px 340px;
 	margin: 0;
 
 	box-sizing: border-box;
@@ -22,9 +30,8 @@ ul.list-books
 	{
 		position: relative;
 		
-		vertical-align: top;
 		display: inline-block;
-
+		
 		width: 100%;
 		max-width: 800px;
 		padding: @padding-card;
@@ -53,6 +60,13 @@ ul.list-books
 			transition: transform .3s, box-shadow .3s;
 		}
 		
+		&:target
+		{
+			margin: -50px 0 2% 0;
+			border-top: 50px solid transparent;
+			background-clip: padding-box;
+		}
+		
 		&:hover
 		{
 			&::before
@@ -60,11 +74,6 @@ ul.list-books
 				box-shadow: 0 0 30px lighten(#000000, 80%);
 				transform: scale(1.02);
 			}
-		}
-		
-		&:nth-child(2n)
-		{
-			margin-right: 0;
 		}
 		
 		> div.container
@@ -76,19 +85,6 @@ ul.list-books
 			padding: 0 0 @height-button @padding-card + @image-width;
 			
 			box-sizing: border-box;
-			
-			a.anhor
-			{
-				position: relative;
-				
-				&:target::before
-				{
-					display: block;
-					height: 170px;
-					margin-top: -170px;
-					content:'';
-				}
-			}
 			
 			> strong
 			{

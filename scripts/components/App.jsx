@@ -206,6 +206,10 @@ class App extends React.PureComponent
 	}
 }
 
+App.propTypes = {
+	listBooks: React.PropTypes.array.isRequired
+};
+
 ReactDOM.render(
 	<App listBooks={listBooks} observable={observable} />,
 	document.getElementById( 'app' )

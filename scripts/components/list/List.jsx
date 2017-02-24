@@ -65,7 +65,8 @@ class List extends React.Component
 };
 
 List.propTypes = {
-	data: React.PropTypes.array.isRequired
+	data: React.PropTypes.array.isRequired,
+	searchIsEmpty: React.PropTypes.bool.isRequired
 };
 
 export {

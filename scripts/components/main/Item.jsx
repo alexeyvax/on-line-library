@@ -125,6 +125,7 @@ class Item extends React.Component
 	
 	render()
 	{
+		const itemId = this.props.itemId;
 		const props = this.props.list;
 		const author = props.author;
 		const name = props.name;
@@ -156,7 +157,7 @@ class Item extends React.Component
 		
 		return (
 			<div className="container">
-				<a className="anhor" id={name}></a>
+				
 				<img src={imageSrc} />
 				<strong>Автор:</strong>
 				{this.changeElements[0]}
@@ -184,6 +185,11 @@ class Item extends React.Component
 
 Item.defaultProps = {
 	content: 'normal'
+};
+
+Item.propTypes = {
+	list: React.PropTypes.object,
+	itemId: React.PropTypes.number
 };
 
 export {
