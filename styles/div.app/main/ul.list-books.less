@@ -29,6 +29,7 @@ ul.list-books
 	> li.book
 	{
 		position: relative;
+		z-index: 1;
 		
 		display: inline-block;
 		
@@ -62,6 +63,7 @@ ul.list-books
 		
 		&:target
 		{
+			z-index: 0;
 			margin: -50px 0 2% 0;
 			border-top: 50px solid transparent;
 			background-clip: padding-box;

@@ -6,6 +6,10 @@ import React from 'react';
 
 class Item extends React.Component
 {
+	static propTypes = {
+		list: React.PropTypes.object
+	};
+	
 	constructor( props )
 	{
 		super( props );
@@ -25,7 +29,6 @@ class Item extends React.Component
 	{
 		const props = this.props.list;
 		const name = props.name;
-		// const id = `#${name}`;
 		const id = `#${props.id}`;
 
 		return (
@@ -34,10 +37,6 @@ class Item extends React.Component
 			</a>
 		);
 	}
-};
-
-Item.propTypes = {
-	list: React.PropTypes.object
 };
 
 export {

@@ -7,6 +7,11 @@ import Item from './Item';
 
 class Main extends React.Component
 {
+	static propTypes = {
+		data: React.PropTypes.array.isRequired,
+		searchIsEmpty: React.PropTypes.bool.isRequired
+	};
+	
 	constructor( props )
 	{
 		super( props );
@@ -24,6 +29,7 @@ class Main extends React.Component
 	
 	render()
 	{
+		console.log( 'main' );
 		const list = this.props.data;
 		const searchIsEmpty = this.props.searchIsEmpty;
 		let bookTemplate;
@@ -59,11 +65,6 @@ class Main extends React.Component
 			</ul>
 		);
 	}
-};
-
-Main.propTypes = {
-	data: React.PropTypes.array.isRequired,
-	searchIsEmpty: React.PropTypes.bool.isRequired
 };
 
 export {

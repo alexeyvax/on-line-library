@@ -4,7 +4,7 @@ import React from 'react';
  * Класс Logo добавляет на страницу логотип
  */
 
-class Logo extends React.Component
+class Logo extends React.PureComponent
 {	
 	render()
 	{

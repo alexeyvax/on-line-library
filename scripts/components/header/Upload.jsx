@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { observable } from '../App.jsx';
+import observable from '../../lib/emitter';
 import langList from '../../lib/langList';
 import ajax from '../../lib/ajax';
 import RadioButtonsGroup from './RadioButtonsGroup';
@@ -9,11 +9,20 @@ import RadioButtonsGroup from './RadioButtonsGroup';
  * Класс Upload формирует форму для загрузки книги
  */
 
-class Upload extends React.Component
+class Upload extends React.PureComponent
 {
+	static defaultProps = {
+		lang: 'any',
+		visibility: false,
+	};
+	
 	constructor( props )
 	{
 		super( props );
+		
+		this.callUploadInput = this.callUploadInput.bind( this );
+		this.handleLangChange = this.handleLangChange.bind( this );
+		this.dataSubmit = this.dataSubmit.bind( this );
 		
 		this.state = {
 			lang: props.lang,
@@ -104,7 +113,7 @@ class Upload extends React.Component
 							multiple="multiple" ref="uploadInput" 
 						/>
 						<label>Загрузить новую книгу в формате PDF</label>
-						<button type="button" ref="uploadButton" onClick={ this.callUploadInput.bind(this)}>
+						<button type="button" ref="uploadButton" onClick={this.callUploadInput}>
 							Выбрать *
 						</button>
 					</li><li>
@@ -119,20 +128,15 @@ class Upload extends React.Component
 					</li><li className="radio-group">
 						<span>Выберите язык книги</span>
 						<RadioButtonsGroup group="addBook-lang" radios={langList} checked={this.state.lang} 
-							handleAddBookLangChange={this.handleLangChange.bind(this)}
+							handleAddBookLangChange={this.handleLangChange}
 						/>
 					</li><li>
-						<button type="submit" onClick={ this.dataSubmit.bind(this) }>Загрузить</button>
+						<button type="submit" onClick={this.dataSubmit}>Загрузить</button>
 					</li>
 				</ul>
 			</form>
 		);
 	}
-};
-
-Upload.defaultProps = {
-	lang: 'any',
-	visibility: false,
 };
 
 export {

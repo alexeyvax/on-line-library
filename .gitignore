@@ -10,5 +10,3 @@ __tests__
 .vscode
 
 npm-debug.log
-.babelrc
-.editorconfig

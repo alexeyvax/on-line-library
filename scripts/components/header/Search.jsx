@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { observable } from '../App.jsx'
+import observable from '../../lib/emitter'
 import langList from '../../lib/langList';
 import RadioButtonsGroup from './RadioButtonsGroup.jsx';
 
@@ -8,12 +8,22 @@ import RadioButtonsGroup from './RadioButtonsGroup.jsx';
  * Класс Search поиск книг
  */
 
-class Search extends React.Component
+class Search extends React.PureComponent
 {
+	static defaultProps = {
+		lang: 'any'
+	};
+	
 	constructor( props )
 	{
 		super( props );
-		this.state = { lang: props.lang };
+		
+		this.handleChange = this.handleChange.bind( this );
+		this.chooseLang = this.chooseLang.bind( this );
+		
+		this.state = {
+			lang: props.lang
+		};
 	}
 	/**
 	 * Запуск поиска по введённым параметрам
@@ -42,7 +52,7 @@ class Search extends React.Component
 		this.setState({
 			lang: lang
 		});
-
+		
 		observable.emit( 'searchBook', authorValue, nameValue, lang );
 	}
 
@@ -54,17 +64,17 @@ class Search extends React.Component
 				<label htmlFor="search">Поиск книги</label>
 				<ul className="search-menu">
 					<li>
-						<input type="text" onChange={this.handleChange.bind(this)}
+						<input type="text" onChange={this.handleChange}
 							placeholder="Поиск книги по автору" ref="searchAuthor"/>
 						<label htmlFor="search-menu">Поиск книги</label>
 					</li><li>
-						<input type="text" onChange={this.handleChange.bind(this)}
+						<input type="text" onChange={this.handleChange}
 							placeholder="Поиск книги по названию" ref="searchName"/>
 						<label htmlFor="search-menu">Поиск книги</label>
 					</li><li className="radio-group">
 						<span>Поиск книги по языку</span>
 						<RadioButtonsGroup group="search-lang" radios={langList} checked={this.state.lang}
-							handleSearchLangChange={this.chooseLang.bind(this)}
+							handleSearchLangChange={this.chooseLang}
 						/>
 					</li>
 				</ul>
@@ -72,8 +82,6 @@ class Search extends React.Component
 		);
 	}
 };
-
-Search.defaultProps = { lang: 'any' };
 
 export {
 	Search as default,

@@ -6,11 +6,18 @@ import React from 'react';
  * @params props свойства
  */
 
-class RadioButtonsGroup extends React.Component
+class RadioButtonsGroup extends React.PureComponent
 {
+	static propTypes = {
+		group: React.PropTypes.string.isRequired,
+		radios: React.PropTypes.array.isRequired,
+		checked: React.PropTypes.string.isRequired
+	};
+	
 	constructor( props )
 	{
 		super( props );
+		this.handleLangChange = this.handleLangChange.bind( this );
 	}
 	/**
 	 * Определение для чего происходит смена языка
@@ -42,7 +49,7 @@ class RadioButtonsGroup extends React.Component
 		if ( radioList.length )
 		{
 			return (
-				<ul className="radio-set" onChange={this.handleLangChange.bind(this)}>
+				<ul className="radio-set" onChange={this.handleLangChange}>
 					{radioList.map(( radio, index ) =>
 					{
 						return (
@@ -70,12 +77,6 @@ class RadioButtonsGroup extends React.Component
 		// checked={this.props.checked === radio.value}
 		// defaultChecked={this.props.checked === radio.value}
 	}
-};
-
-RadioButtonsGroup.propTypes = {
-	group: React.PropTypes.string.isRequired,
-	radios: React.PropTypes.array.isRequired,
-	checked: React.PropTypes.string.isRequired
 };
 
 export {

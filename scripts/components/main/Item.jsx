@@ -3,16 +3,30 @@ import Controls from './controls/Controls.jsx';
 import RadioButtonsGroup from '../header/RadioButtonsGroup.jsx';
 import langList from '../../lib/langList';
 import ajax from '../../lib/ajax';
-import { observable } from '../App.jsx'
+import observable from '../../lib/emitter'
 
 /**
  * Класс Item формирует и создаёт плитку с книгой и информацией о ней
  */
 class Item extends React.Component
 {
+	static defaultProps = {
+		content: 'normal'
+	};
+
+	static propTypes = {
+		list: React.PropTypes.object,
+		itemId: React.PropTypes.number
+	};
+	
 	constructor( props )
 	{
 		super( props );
+		
+		this.save = this.save.bind( this );
+		this.change = this.change.bind( this );
+		this.disable = this.disable.bind( this );
+		this.remove = this.remove.bind( this );
 		
 		this.state = {
 			content: props.content
@@ -34,6 +48,7 @@ class Item extends React.Component
 		
 		return false;
 	}
+	
 	/**
 	 * Сохранение изменений данных о книге
 	 * 
@@ -125,7 +140,7 @@ class Item extends React.Component
 	
 	render()
 	{
-		const itemId = this.props.itemId;
+		console.log( 'main-item' );
 		const props = this.props.list;
 		const author = props.author;
 		const name = props.name;
@@ -157,7 +172,6 @@ class Item extends React.Component
 		
 		return (
 			<div className="container">
-				
 				<img src={imageSrc} />
 				<strong>Автор:</strong>
 				{this.changeElements[0]}
@@ -173,23 +187,14 @@ class Item extends React.Component
 				{this.changeElements[2]}
 				<a className="download" href={link} download>Скачать</a>
 				<Controls 
-					saveElements={this.save.bind( this )} 
-					changeElements={this.change.bind( this )} 
-					disableElements={this.disable.bind( this )} 
-					removeElements={this.remove.bind( this )} 
+					saveElements={this.save} 
+					changeElements={this.change} 
+					disableElements={this.disable} 
+					removeElements={this.remove} 
 				/>
 			</div>
 		);
 	}
-};
-
-Item.defaultProps = {
-	content: 'normal'
-};
-
-Item.propTypes = {
-	list: React.PropTypes.object,
-	itemId: React.PropTypes.number
 };
 
 export {

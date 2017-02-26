@@ -8,9 +8,18 @@ import ajax from '../../../lib/ajax';
 
 class Controls extends React.PureComponent
 {
+	static defaultProps = {
+		visibility: true
+	};
+	
 	constructor( props )
 	{
 		super( props );
+		
+		this.change = this.change.bind( this );
+		this.remove = this.remove.bind( this );
+		this.disable = this.disable.bind( this );
+		this.save = this.save.bind( this );
 		
 		this.state = {
 			visibility: props.visibility
@@ -69,29 +78,25 @@ class Controls extends React.PureComponent
 	{
 		return (
 			<div className="controls">
-				<button type="button" className="buttonChange" onClick={this.change.bind( this )}>
+				<button type="button" className="buttonChange" onClick={this.change}>
 					Изменить
 				</button>
-				<button type="button" className="buttonRemove" onClick={this.remove.bind( this )}>
+				<button type="button" className="buttonRemove" onClick={this.remove}>
 					Удалить
 				</button>
 				<button type="button" className="buttonClose" disabled={this.state.visibility} 
-					onClick={this.disable.bind( this )}
+					onClick={this.disable}
 				>
 					Отменить
 				</button>
 				<button type="button" className="buttonSave" disabled={this.state.visibility} 
-					onClick={this.save.bind( this )}
+					onClick={this.save}
 				>
 					Сохранить
 				</button>
 			</div>
 		);
 	}
-};
-
-Controls.defaultProps = {
-	visibility: true
 };
 
 export {

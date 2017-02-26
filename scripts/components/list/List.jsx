@@ -7,6 +7,11 @@ import Item from './Item';
 
 class List extends React.Component
 {
+	static propTypes = {
+		data: React.PropTypes.array.isRequired,
+		searchIsEmpty: React.PropTypes.bool.isRequired
+	};
+	
 	shouldComponentUpdate(nextProps, nextState)
 	{
 		if (this.props.data !== nextProps.data)
@@ -62,11 +67,6 @@ class List extends React.Component
 			</ul>
 		);
 	};
-};
-
-List.propTypes = {
-	data: React.PropTypes.array.isRequired,
-	searchIsEmpty: React.PropTypes.bool.isRequired
 };
 
 export {
