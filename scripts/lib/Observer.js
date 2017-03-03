@@ -24,5 +24,5 @@ class Observer
 }
 
 export {
-	Observer as default,
-}
+	Observer as default
+};

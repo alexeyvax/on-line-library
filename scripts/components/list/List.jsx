@@ -38,7 +38,7 @@ class List extends React.Component
 						<li className="book" key={item.id}>
 							<Item list={item} />
 						</li>
-					)
+					);
 				}
 			);
 			
@@ -53,7 +53,7 @@ class List extends React.Component
 			if ( !searchIsEmpty )
 			{
 				bookTemplate = <li className="empty">Пока ещё нет книг</li>;
-			}	
+			}
 			else
 			{
 				bookTemplate = <li className="empty">Совпадений не найдено</li>;
@@ -66,9 +66,9 @@ class List extends React.Component
 				{bookTemplate}
 			</ul>
 		);
-	};
-};
+	}
+}
 
 export {
-	List as default,
-}
+	List as default
+};

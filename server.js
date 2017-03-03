@@ -1,14 +1,12 @@
-const libUpload = require( './lib/upload' );
-const libRoute = require( './lib/route' );
+const libUpload = require( './server/upload' );
+const libRoute = require( './server/route' );
 
 const express = require( 'express' ),
 	fs = require( 'fs' ),
 	bodyParser = require( 'body-parser' ),
 	app = express(),
 	handlebars = require( 'express-handlebars' ).create({ defaultLayout: 'index' }),
-	formidable = require( 'formidable' ),
-	path = require( 'path' ),
-	PDFImage = require( 'pdf-image' ).PDFImage;
+	path = require( 'path' );
 
 const config = {
 	path: {
@@ -32,8 +30,8 @@ app.use( '/view', express.static( config.path.view ) );
 app.use(
 	( req, res, next ) =>
 	{
-		res.header( "Access-Control-Allow-Origin", "*" );
-		res.header( "Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept" );
+		res.header( 'Access-Control-Allow-Origin', '*' );
+		res.header( 'Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept' );
 		res.header( 'Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE' );
 		next();
 	}
@@ -86,18 +84,16 @@ const routeParams = {
 		pathListBooks: pathListBooks,
 		folder: folder
 	}
-}
+};
 
 libRoute.route( app, routeParams );
 
+const port = 3004;
+
 app.listen(
-	3004,
-	()=>
+	port,
+	() =>
 	{
 		console.log( 'Server started: http://localhost:3004/' );
 	}
 );
-
-// Итан Браун
-// Веб разработка на Node js и Express
-// В данной книге рассматривается построение полноценного приложения с использованием Node js и Express

@@ -1,6 +1,8 @@
 'use strict';
 
 const libToTranslite = require( './toTranslite' );
+/** Число, которое преобразует десятичную дробь в целое число */
+const CONVERT_NUMBER = 100;
 
 const fs = require( 'fs' ),
 	formidable = require( 'formidable' ),
@@ -25,7 +27,7 @@ function upload( req, res, _dirname )
 	
 	form.on( 'error', ( err ) =>
 	{
-		console.log( 'An error has occured: \n' + err );
+		console.error( 'An error has occured: \n' + err );
 	});
 	
 	form.on('field', ( field, value ) =>
@@ -39,7 +41,7 @@ function upload( req, res, _dirname )
 			arrName = clearName.split('.'), // превращение имени в массив по точке
 			trimName = [arrName[0], arrName[arrName.length -1]].join('.'), // соединяю 1 и последний элементы
 			name = libToTranslite.toTranslite( trimName ), // перевод в транслит
-			uniqueNumber = Math.round( Math.random() * 100 ) + Date.now(),
+			uniqueNumber = Math.round( Math.random() * CONVERT_NUMBER ) + Date.now(),
 			dirName = name.replace( /\.[^.]+$/, '' ) + '_' + uniqueNumber, // имя созданной директории
 			dir = `books/${dirName}`, // путь к созданной директории
 			wayPdf = `${dir}/${name}`; // путь к загруженной pdf
@@ -59,7 +61,7 @@ function upload( req, res, _dirname )
 		{
 			const listBooks = `${_dirname}/backend/listBooks.json`, // путь к файлу с данными
 				data = JSON.parse(fs.readFileSync(listBooks)), // распарсенные данные
-				newNameImg = `image.png`; // переименовывание картинки
+				newNameImg = 'image.png'; // переименовывание картинки
 				
 			fs.rename(
 				`${_dirname}/books/${dirName}/${imageName}`,

@@ -12,8 +12,8 @@ class Logo extends React.PureComponent
 			<h1>On-line library</h1>
 		);
 	}
-};
+}
 
 export {
-	Logo as default,
-}
+	Logo as default
+};

@@ -77,8 +77,8 @@ class RadioButtonsGroup extends React.PureComponent
 		// checked={this.props.checked === radio.value}
 		// defaultChecked={this.props.checked === radio.value}
 	}
-};
+}
 
 export {
-	RadioButtonsGroup as default,
-}
+	RadioButtonsGroup as default
+};

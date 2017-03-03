@@ -1,6 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import ajax from '../../../lib/ajax';
 
 /**
  * Класс Controls кнопки управления
@@ -97,8 +95,8 @@ class Controls extends React.PureComponent
 			</div>
 		);
 	}
-};
+}
 
 export {
-	Controls as default,
-}
+	Controls as default
+};

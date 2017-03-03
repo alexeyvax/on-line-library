@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import observable from '../../lib/emitter'
+import observable from '../../lib/emitter';
 import langList from '../../lib/langList';
 import RadioButtonsGroup from './RadioButtonsGroup.jsx';
 
@@ -81,8 +81,8 @@ class Search extends React.PureComponent
 			</div>
 		);
 	}
-};
+}
 
 export {
-	Search as default,
-}
+	Search as default
+};

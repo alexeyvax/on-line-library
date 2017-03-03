@@ -37,8 +37,8 @@ class Item extends React.Component
 			</a>
 		);
 	}
-};
+}
 
 export {
-	Item as default,
-}
+	Item as default
+};

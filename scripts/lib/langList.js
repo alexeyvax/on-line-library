@@ -11,5 +11,5 @@ const langList = [
 ];
 
 export {
-	langList as default,	
-}
+	langList as default
+};

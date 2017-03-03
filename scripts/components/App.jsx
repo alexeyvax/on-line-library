@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import observable from '../lib/emitter';
 import Observer from '../lib/Observer';
 import Header from './header/Header.jsx';
@@ -12,7 +11,7 @@ import Main from './main/Main.jsx';
 class App extends React.PureComponent
 {
 	static propTypes = {
-		listBooks: React.PropTypes.array.isRequired,
+		listBooks: React.PropTypes.array.isRequired
 	};
 	
 	constructor( props )
@@ -136,7 +135,7 @@ class App extends React.PureComponent
 							{
 								return item.lang === lang;
 							}
-
+							
 							return item;
 						}
 					});
@@ -188,10 +187,9 @@ class App extends React.PureComponent
 		observable.addListener( 'changeBook', ( [index, needle] ) =>
 		{
 			this.setState( prevState => ({
-					list: [...prevState.list.slice( 0, index ), needle, ...prevState.list.slice( index + 1 )],
-					search: [...prevState.list.slice( 0, index ), needle, ...prevState.list.slice( index + 1 )]
-				})
-			);
+				list: [...prevState.list.slice( 0, index ), needle, ...prevState.list.slice( index + 1 )],
+				search: [...prevState.list.slice( 0, index ), needle, ...prevState.list.slice( index + 1 )]
+			}));
 		});
 		
 		new Observer( 4, observable, 'changeBook' );
@@ -207,5 +205,5 @@ class App extends React.PureComponent
 }
 
 export {
-	App as default,
-}
+	App as default
+};

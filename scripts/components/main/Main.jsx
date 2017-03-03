@@ -29,7 +29,6 @@ class Main extends React.Component
 	
 	render()
 	{
-		console.log( 'main' );
 		const list = this.props.data;
 		const searchIsEmpty = this.props.searchIsEmpty;
 		let bookTemplate;
@@ -37,13 +36,13 @@ class Main extends React.Component
 		if ( list.length )
 		{
 			bookTemplate = list.map(
-				( item, index ) =>
+				( item ) =>
 				{
 					return (
 						<li id={item.id} className="book" key={item.id}>
 							<Item list={item} itemId={item.id} />
 						</li>
-					)
+					);
 				}
 			);
 		}
@@ -52,11 +51,11 @@ class Main extends React.Component
 			if ( !searchIsEmpty )
 			{
 				bookTemplate = <li className="empty">Пока ещё нет книг</li>;
-			}	
+			}
 			else
 			{
 				bookTemplate = <li className="empty">Совпадений не найдено</li>;
-			}	
+			}
 		}
 
 		return (
@@ -65,8 +64,8 @@ class Main extends React.Component
 			</ul>
 		);
 	}
-};
+}
 
 export {
-	Main as default,
-}
+	Main as default
+};

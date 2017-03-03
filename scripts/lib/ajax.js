@@ -8,6 +8,9 @@
  * @param success коллбек функция при успехе запроса
  */
 
+/** Код успешной отправки */
+const CODE_200 = 200;
+
 function ajax( method, url, body, bodyIsJson, success )
 {
 	const request = new XMLHttpRequest();
@@ -28,7 +31,7 @@ function ajax( method, url, body, bodyIsJson, success )
 	function send()
 	{
 		if ( request.readyState === XMLHttpRequest.DONE
-			&& request.status === 200 )
+			&& request.status === CODE_200 )
 		{
 			success( request.responseText );
 			
@@ -36,11 +39,11 @@ function ajax( method, url, body, bodyIsJson, success )
 		}
 		else
 		{
-			console.log( 'Не прочитано' );
+			console.error( 'Не прочитано' );
 		}
 	}
 }
 
 export {
-	ajax as default,
-}
+	ajax as default
+};

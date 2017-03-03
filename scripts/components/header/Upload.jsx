@@ -8,12 +8,11 @@ import RadioButtonsGroup from './RadioButtonsGroup';
 /**
  * Класс Upload формирует форму для загрузки книги
  */
-
 class Upload extends React.PureComponent
 {
 	static defaultProps = {
 		lang: 'any',
-		visibility: false,
+		visibility: false
 	};
 	
 	constructor( props )
@@ -26,7 +25,7 @@ class Upload extends React.PureComponent
 		
 		this.state = {
 			lang: props.lang,
-			visibility: props.visibility,
+			visibility: props.visibility
 		};
 	}
 	/**
@@ -80,7 +79,7 @@ class Upload extends React.PureComponent
 				observable.emit( 'addBook', JSON.parse( response ));
 				form.reset();
 				this.setState({
-					lang: 'any',
+					lang: 'any'
 				});
 			});
 		}
@@ -137,8 +136,8 @@ class Upload extends React.PureComponent
 			</form>
 		);
 	}
-};
+}
 
 export {
-	Upload as default,
-}
+	Upload as default
+};

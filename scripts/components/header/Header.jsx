@@ -19,8 +19,8 @@ class Header extends React.PureComponent
 			</header>
 		);
 	}
-};
+}
 
 export {
-	Header as default,
-}
+	Header as default
+};

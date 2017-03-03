@@ -1,10 +1,9 @@
-const path = require( 'path' );
 const webpack = require( 'webpack' );
 
 module.exports = {
 	context: __dirname,
 	entry: {
-		app: './scripts',
+		app: './scripts'
 	},
 	output: {
 		path: './public', filename: '[name].js'

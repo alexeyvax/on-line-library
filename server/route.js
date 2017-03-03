@@ -1,4 +1,6 @@
 const fs = require('fs');
+/** Время через которое запустится удаление с использованием рекурсии */
+const TIME_REMOVE = 100;
 
 function route( app, routeParams )
 {
@@ -66,15 +68,12 @@ function route( app, routeParams )
 				
 				fs.readdir( folder, ( err, files ) =>
 				{
-					let needleDir;
-					const deleteDir = files.some( searchDir );
+					files.some( searchDir );
 					
 					function searchDir( item )
 					{
 						if ( String( item.match( /[^_]+$/ )) === id )
 						{
-							needleDir = item;
-							
 							rmdir( folder + '/' + item );
 							
 							return true;
@@ -100,7 +99,7 @@ function route( app, routeParams )
 								for ( let i = 0; i < len; i++ )
 								{
 									fs.unlink( dir + '/' + files[i] );
-								};
+								}
 							}
 						});
 						
@@ -118,7 +117,7 @@ function route( app, routeParams )
 									
 									if ( checkDir )
 									{
-										console.log( 'i need removed' );
+										console.warn( 'I need to remove' );
 										
 										// call rmdir not more than three times
 										if ( tryCount <= 3 )
@@ -130,10 +129,10 @@ function route( app, routeParams )
 									}
 									else
 									{
-										console.log( dir + ' was removed!' );
+										console.warn( dir + ' was removed!' );
 									}
 								});
-							}, 100
+							}, TIME_REMOVE
 						);
 					}
 				});
@@ -184,7 +183,7 @@ function route( app, routeParams )
 			})
 			.catch(( reason ) =>
 			{
-				console.log( `Error: ${reason}` );
+				console.error( `Error: ${reason}` );
 			});
 		}
 	);

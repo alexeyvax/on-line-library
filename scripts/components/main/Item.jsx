@@ -1,9 +1,9 @@
 import React from 'react';
 import Controls from './controls/Controls.jsx';
-import RadioButtonsGroup from '../header/RadioButtonsGroup.jsx';
-import langList from '../../lib/langList';
+// import RadioButtonsGroup from '../header/RadioButtonsGroup.jsx';
+// import langList from '../../lib/langList';
 import ajax from '../../lib/ajax';
-import observable from '../../lib/emitter'
+import observable from '../../lib/emitter';
 
 /**
  * Класс Item формирует и создаёт плитку с книгой и информацией о ней
@@ -51,10 +51,8 @@ class Item extends React.Component
 	
 	/**
 	 * Сохранение изменений данных о книге
-	 * 
-	 * @param event
 	 */
-	save( event )
+	save()
 	{
 		const authorInput = this.refs.authorInput,
 			nameInput = this.refs.nameInput,
@@ -87,10 +85,8 @@ class Item extends React.Component
 	}
 	/**
 	 * Начать изменять данные о книге
-	 * 
-	 * @param event
 	 */
-	change( event )
+	change()
 	{
 		this.setState({
 			content: 'change'
@@ -98,10 +94,8 @@ class Item extends React.Component
 	}
 	/**
 	 * Отменить изменения
-	 * 
-	 * @param event
 	 */
-	disable( event )
+	disable()
 	{
 		this.setState({
 			content: 'normal'
@@ -109,10 +103,8 @@ class Item extends React.Component
 	}
 	/**
 	 * Удалить плитку с книгой
-	 * 
-	 * @param event
 	 */
-	remove( event )
+	remove()
 	{
 		const itemId = this.props.itemId;
 		
@@ -140,7 +132,6 @@ class Item extends React.Component
 	
 	render()
 	{
-		console.log( 'main-item' );
 		const props = this.props.list;
 		const author = props.author;
 		const name = props.name;
@@ -195,8 +186,8 @@ class Item extends React.Component
 			</div>
 		);
 	}
-};
+}
 
 export {
-	Item as default,
-}
+	Item as default
+};

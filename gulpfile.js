@@ -29,9 +29,8 @@ gulp.task(
 );
 
 gulp.task( 'watch', () =>
-	{
-		gulp.watch( 'styles/**/*.less', ['styles'] );
-	}
-);
+{
+	gulp.watch( 'styles/**/*.less', ['styles'] );
+});
 
 gulp.task( 'default', ['watch', 'styles'] );
