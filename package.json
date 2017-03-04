@@ -1,10 +1,9 @@
 {
-  "name": "library",
+  "name": "library-redux",
   "version": "1.0.7",
-  "description": "on-line library",
+  "description": "on-line library (redux)",
   "author": "Alexey Vakhrushev <Alexeyvax1990@gmail.com>",
   "license": "MIT",
-  "homepage": "https://github.com/alexeyvax/on-line-library",
   "main": "server.js",
   "scripts": {
     "start": "npm run build && npm run styles && node server.js ",

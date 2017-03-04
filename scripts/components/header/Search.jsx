@@ -7,7 +7,6 @@ import RadioButtonsGroup from './RadioButtonsGroup.jsx';
 /**
  * Класс Search поиск книг
  */
-
 class Search extends React.PureComponent
 {
 	static defaultProps = {
