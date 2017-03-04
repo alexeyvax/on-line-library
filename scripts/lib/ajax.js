@@ -1,3 +1,6 @@
+/** Код успешной отправки */
+const CODE_200 = 200;
+
 /**
  * Отправляет ajax запрос на сервер с данными
  *
@@ -7,10 +10,6 @@
  * @param bodyIsJson формат дополнительных данных json?
  * @param success коллбек функция при успехе запроса
  */
-
-/** Код успешной отправки */
-const CODE_200 = 200;
-
 function ajax( method, url, body, bodyIsJson, success )
 {
 	const request = new XMLHttpRequest();
@@ -34,8 +33,6 @@ function ajax( method, url, body, bodyIsJson, success )
 			&& request.status === CODE_200 )
 		{
 			success( request.responseText );
-			
-			// console.log( 'прочитано', request.responseText );
 		}
 		else
 		{

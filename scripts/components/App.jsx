@@ -1,6 +1,5 @@
 import React from 'react';
 import observable from '../lib/emitter';
-import Observer from '../lib/Observer';
 import Header from './header/Header.jsx';
 import List from './list/List.jsx';
 import Main from './main/Main.jsx';
@@ -52,8 +51,6 @@ class App extends React.PureComponent
 				search: [...prevState.list, item]
 			}));
 		});
-		
-		new Observer( 1, observable, 'addBook' );
 
 		/**
 		 * Поиск книги по автору и названию,
@@ -161,8 +158,6 @@ class App extends React.PureComponent
 			this.setState({ list: filterList });
 		});
 		
-		new Observer( 2, observable, 'searchBook' );
-		
 		/**
 		 * Удаление книги
 		 * 
@@ -175,8 +170,6 @@ class App extends React.PureComponent
 				search: [...prevState.list.filter((_, i) => i !== index)]
 			}));
 		});
-		
-		new Observer( 3, observable, 'removeBook' );
 		
 		/**
 		 * Изменение информации о книге
@@ -191,8 +184,6 @@ class App extends React.PureComponent
 				search: [...prevState.list.slice( 0, index ), needle, ...prevState.list.slice( index + 1 )]
 			}));
 		});
-		
-		new Observer( 4, observable, 'changeBook' );
 	}
 	
 	componentWillUnmount()
