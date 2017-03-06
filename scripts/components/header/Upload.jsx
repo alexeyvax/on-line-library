@@ -54,7 +54,7 @@ class Upload extends React.PureComponent
 			name = ReactDOM.findDOMNode( this.refs.name ).value,
 			description = ReactDOM.findDOMNode( this.refs.description ).value,
 			lang = this.state.lang;
-
+			
 		if ( upload.value 
 			&& author 
 			&& name 
@@ -62,11 +62,22 @@ class Upload extends React.PureComponent
 		{
 			const fileList = upload.files;
 			const formData = new FormData();
+			let typeBookIsTrue = true;
 
 			for ( let i = 0; i < fileList.length; i++ )
 			{
 				const file = fileList[i];
-				formData.append( 'uploads', file, file.name );
+				const getTypeFileOnString = -4;
+				
+				if ( file.name.substr(getTypeFileOnString) === '.pdf' )
+				{
+					formData.append( 'uploads', file, file.name );
+				}
+				else
+				{
+					typeBookIsTrue = false;
+				}
+				
 			}
 			
 			formData.append( 'author', author );
@@ -74,14 +85,21 @@ class Upload extends React.PureComponent
 			formData.append( 'description', description );
 			formData.append( 'lang', lang );
 			
-			ajax(method, action, formData, false, ( response ) =>
+			if ( typeBookIsTrue )
 			{
-				observable.emit( 'addBook', JSON.parse( response ));
-				form.reset();
-				this.setState({
-					lang: 'any'
+				ajax(method, action, formData, false, ( response ) =>
+				{
+					observable.emit( 'addBook', JSON.parse( response ));
+					form.reset();
+					this.setState({
+						lang: 'any'
+					});
 				});
-			});
+			}
+			else
+			{
+				alert( 'Загрузите пожалуйста книгу в формате .pdf' );
+			}
 		}
 		else
 		{
