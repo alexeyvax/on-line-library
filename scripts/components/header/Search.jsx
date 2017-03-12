@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import observable from '../../lib/emitter';
 import langList from '../../lib/langList';
 import RadioButtonsGroup from './RadioButtonsGroup.jsx';
@@ -29,12 +28,14 @@ class Search extends React.PureComponent
 	 */
 	handleChange()
 	{
-		const author = ReactDOM.findDOMNode( this.refs.searchAuthor ),
-			name = ReactDOM.findDOMNode( this.refs.searchName ),
-			authorValue = author.value,
-			nameValue = name.value;
+		const { searchAuthor, searchName } = this.refs;
 			
-		observable.emit( 'searchBook', authorValue, nameValue, this.state.lang );
+		observable.emit( 
+			'searchBook', 
+			searchAuthor.value, 
+			searchName.value, 
+			this.state.lang 
+		);
 	}
 	/**
 	 * Запуск сортировки книг по языку
@@ -43,16 +44,18 @@ class Search extends React.PureComponent
 	 */
 	chooseLang( lang )
 	{
-		const author = ReactDOM.findDOMNode( this.refs.searchAuthor ),
-			name = ReactDOM.findDOMNode( this.refs.searchName ),
-			authorValue = author.value,
-			nameValue = name.value;
+		const { searchAuthor, searchName } = this.refs;
 		
 		this.setState({
 			lang: lang
 		});
 		
-		observable.emit( 'searchBook', authorValue, nameValue, lang );
+		observable.emit( 
+			'searchBook', 
+			searchAuthor.value, 
+			searchName.value, 
+			lang 
+		);
 	}
 
 	render()
@@ -63,16 +66,27 @@ class Search extends React.PureComponent
 				<label htmlFor="search">Поиск книги</label>
 				<ul className="search-menu">
 					<li>
-						<input type="text" onChange={this.handleChange}
-							placeholder="Поиск книги по автору" ref="searchAuthor"/>
+						<input 
+							type="text" 
+							onChange={this.handleChange} 
+							placeholder="Поиск книги по автору" 
+							ref="searchAuthor"
+						/>
 						<label htmlFor="search-menu">Поиск книги</label>
 					</li><li>
-						<input type="text" onChange={this.handleChange}
-							placeholder="Поиск книги по названию" ref="searchName"/>
+						<input 
+							type="text" 
+							onChange={this.handleChange} 
+							placeholder="Поиск книги по названию" 
+							ref="searchName"
+						/>
 						<label htmlFor="search-menu">Поиск книги</label>
 					</li><li className="radio-group">
 						<span>Поиск книги по языку</span>
-						<RadioButtonsGroup group="search-lang" radios={langList} checked={this.state.lang}
+						<RadioButtonsGroup 
+							group="search-lang" 
+							radios={langList} 
+							checked={this.state.lang} 
 							handleSearchLangChange={this.chooseLang}
 						/>
 					</li>

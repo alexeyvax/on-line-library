@@ -54,12 +54,8 @@ class Item extends React.Component
 	 */
 	save()
 	{
-		const authorInput = this.refs.authorInput,
-			nameInput = this.refs.nameInput,
-			descriptionInput = this.refs.descriptionInput;
-		
-		const itemId = this.props.itemId;
-		
+		const { authorInput, nameInput, descriptionInput } = this.refs;
+		const { itemId } = this.props;
 		const body = {
 			'author': authorInput.value,
 			'name': nameInput.value,
@@ -133,12 +129,7 @@ class Item extends React.Component
 	render()
 	{
 		const props = this.props.list;
-		const author = props.author;
-		const name = props.name;
-		const imageSrc = props.imageSrc;
-		const description = props.description;
-		const lang = props.lang;
-		const link = props.link;
+		const { author, name, imageSrc, description, lang, link } = props;
 		
 		if ( this.state.content === 'normal' )
 		{

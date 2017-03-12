@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 /**
  * Класс Item формирует и создаёт название книги
  */
-
 class Item extends React.Component
 {
 	static propTypes = {
-		list: React.PropTypes.object
+		list: PropTypes.shape({
+			name: PropTypes.string.isRequired,
+			id: PropTypes.number.isRequired
+		}).isRequired
 	};
 	
 	constructor( props )

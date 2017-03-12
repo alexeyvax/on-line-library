@@ -3,7 +3,6 @@ import React from 'react';
 /**
  * Класс Controls кнопки управления
  */
-
 class Controls extends React.PureComponent
 {
 	static defaultProps = {

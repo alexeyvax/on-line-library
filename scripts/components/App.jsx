@@ -31,8 +31,15 @@ class App extends React.PureComponent
 		return (
 			<section>
 				<Header />
-				<List ref="list" data={this.state.list} searchIsEmpty={this.searchIsEmpty}/>
-				<Main data={this.state.list} searchIsEmpty={this.searchIsEmpty}/>
+				<List 
+					ref="list" 
+					data={this.state.list} 
+					searchIsEmpty={this.searchIsEmpty}
+				/>
+				<Main 
+					data={this.state.list} 
+					searchIsEmpty={this.searchIsEmpty}
+				/>
 			</section>
 		);
 	}

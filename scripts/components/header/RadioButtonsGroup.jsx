@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 /**
  * Класс RadioButtonsGroup создание радио кнопок
@@ -9,9 +9,12 @@ import React from 'react';
 class RadioButtonsGroup extends React.PureComponent
 {
 	static propTypes = {
-		group: React.PropTypes.string.isRequired,
-		radios: React.PropTypes.array.isRequired,
-		checked: React.PropTypes.string.isRequired
+		group: PropTypes.string.isRequired,
+		radios: PropTypes.arrayOf(PropTypes.shape({
+			title: PropTypes.string.isRequired,
+			value: PropTypes.string.isRequired
+		}).isRequired).isRequired,
+		checked: PropTypes.string.isRequired
 	};
 	
 	constructor( props )

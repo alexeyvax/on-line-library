@@ -57,7 +57,7 @@ class Main extends React.Component
 				bookTemplate = <li className="empty">Совпадений не найдено</li>;
 			}
 		}
-
+		
 		return (
 			<ul className="list-books">
 				{bookTemplate}
