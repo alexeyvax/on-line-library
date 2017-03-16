@@ -55,16 +55,18 @@ class RadioButtonsGroup extends React.PureComponent
 				<ul className="radio-set" onChange={this.handleLangChange}>
 					{radioList.map(( radio, index ) =>
 					{
+						const id = `${this.props.group}-${radio.value}`;
+						
 						return (
 							<li key={index}>
 								<input type="radio"
-									id={`${this.props.group}-${radio.value}`}
+									id={id}
 									name={this.props.group}
 									value={radio.value}
 									onChange={() => {}}
 									checked={this.props.checked === radio.value}
 								/>
-								<label htmlFor={`${this.props.group}-${radio.value}`}>{radio.value}</label>
+								<label htmlFor={id}>{radio.value}</label>
 							</li>
 						);
 					})}
