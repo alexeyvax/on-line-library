@@ -18,16 +18,20 @@ On-line library не имеет мобильной версии, т.к. изна
 
 ## Пример использования
 
-###Как загрузить книгу
+### Как загрузить книгу
+
 ![Example upload](https://github.com/alexeyvax/on-line-library/blob/master/gif-example/upload.gif)
 
-###Как отредактировать
+### Как отредактировать
+
 ![Example change](https://github.com/alexeyvax/on-line-library/blob/master/gif-example/change.gif)
 
-###Как найти нужную книгу
+### Как найти нужную книгу
+
 ![Example search](https://github.com/alexeyvax/on-line-library/blob/master/gif-example/search.gif)
 
-###Как удалить книгу
+### Как удалить книгу
+
 ![Example remove](https://github.com/alexeyvax/on-line-library/blob/master/gif-example/remove.gif)
 
 ## Установка

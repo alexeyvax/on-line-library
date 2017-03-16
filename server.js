@@ -21,17 +21,19 @@ const config = {
 	}
 };
 
-app.use( '/public', express.static( config.path.public ) );
-app.use( '/backend', express.static( config.path.backend ) );
-app.use( '/images', express.static( config.path.images ) );
-app.use( '/books', express.static( config.path.books ) );
-app.use( '/view', express.static( config.path.view ) );
+app.use( '/public', express.static( config.path.public ));
+app.use( '/backend', express.static( config.path.backend ));
+app.use( '/images', express.static( config.path.images ));
+app.use( '/books', express.static( config.path.books ));
+app.use( '/view', express.static( config.path.view ));
 
 app.use(
 	( req, res, next ) =>
 	{
 		res.header( 'Access-Control-Allow-Origin', '*' );
-		res.header( 'Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept' );
+		res.header(
+			'Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept'
+		);
 		res.header( 'Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE' );
 		next();
 	}
