@@ -5,61 +5,45 @@ import Item from './Item';
  * Класс List формирует и создаёт список из названий книг
  */
 
-class List extends React.Component
-{
+class List extends React.Component {
 	static propTypes = {
 		data: React.PropTypes.array.isRequired,
-		searchIsEmpty: React.PropTypes.bool.isRequired
+		searchIsEmpty: React.PropTypes.bool.isRequired,
 	};
 	
-	shouldComponentUpdate(nextProps, nextState)
-	{
-		if (this.props.data !== nextProps.data)
-		{
+	shouldComponentUpdate(nextProps, nextState) {
+		if (this.props.data !== nextProps.data) {
 			return true;
 		}
-		
 		return false;
 	}
 	
-	render()
-	{
+	render() {
 		const list = this.props.data;
 		const searchIsEmpty = this.props.searchIsEmpty;
 		let bookTemplate;
 		let countBook;
 		
-		if ( list.length )
-		{
-			bookTemplate = list.map(
-				( item ) =>
-				{
-					return (
-						<li className="book" key={item.id}>
-							<Item list={item} />
-						</li>
-					);
-				}
+		if (list.length) {
+			bookTemplate = list.map(item => {
+				return (
+					<li className="book" key={item.id}>
+						<Item list={item} />
+					</li>
+				);}
 			);
-			
 			countBook = <li className="countBook">
 							<strong>
 								Всего книг: {list.length}
 							</strong>
 						</li>;
-		}
-		else
-		{
-			if ( !searchIsEmpty )
-			{
+		} else {
+			if (!searchIsEmpty) {
 				bookTemplate = <li className="empty">Пока ещё нет книг</li>;
-			}
-			else
-			{
+			} else {
 				bookTemplate = <li className="empty">Совпадений не найдено</li>;
 			}
 		}
-
 		return (
 			<ul className="list-names-books">
 				{countBook}
@@ -69,6 +53,4 @@ class List extends React.Component
 	}
 }
 
-export {
-	List as default
-};
+export default List;

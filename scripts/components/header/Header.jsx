@@ -7,10 +7,8 @@ import Upload from './Upload.jsx';
  * Класс Header формирует шапку приложения
  */
 
-class Header extends React.PureComponent
-{
-	render()
-	{
+class Header extends React.PureComponent {
+	render() {
 		return (
 			<header className="header">
 				<Logo />
@@ -21,6 +19,4 @@ class Header extends React.PureComponent
 	}
 }
 
-export {
-	Header as default
-};
+export default Header;

@@ -5,55 +5,36 @@ import Item from './Item';
  * Класс Main формирует основной раздел со списком книг
  */
 
-class Main extends React.Component
-{
+class Main extends React.Component {
 	static propTypes = {
 		data: React.PropTypes.array.isRequired,
-		searchIsEmpty: React.PropTypes.bool.isRequired
+		searchIsEmpty: React.PropTypes.bool.isRequired,
 	};
 	
-	constructor( props )
-	{
-		super( props );
-	}
-	
-	shouldComponentUpdate(nextProps, nextState)
-	{
-		if (this.props.data !== nextProps.data)
-		{
+	shouldComponentUpdate(nextProps, nextState) {
+		if (this.props.data !== nextProps.data) {
 			return true;
 		}
-		
 		return false;
 	}
 	
-	render()
-	{
+	render() {
 		const list = this.props.data;
 		const searchIsEmpty = this.props.searchIsEmpty;
 		let bookTemplate;
 		
-		if ( list.length )
-		{
-			bookTemplate = list.map(
-				( item ) =>
-				{
-					return (
-						<li id={item.id} className="book" key={item.id}>
-							<Item list={item} itemId={item.id} />
-						</li>
-					);
-				}
+		if (list.length) {
+			bookTemplate = list.map(item => {
+				return (
+					<li id={item.id} className="book" key={item.id}>
+						<Item list={item} itemId={item.id} />
+					</li>
+				);}
 			);
-		}
-		else
-		{
-			if ( !searchIsEmpty )
-			{
+		} else {
+			if (!searchIsEmpty) {
 				bookTemplate = <li className="empty">Пока ещё нет книг</li>;
-			}
-			else
-			{
+			} else {
 				bookTemplate = <li className="empty">Совпадений не найдено</li>;
 			}
 		}
@@ -66,6 +47,4 @@ class Main extends React.Component
 	}
 }
 
-export {
-	Main as default
-};
+export default Main;

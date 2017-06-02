@@ -36,7 +36,7 @@
 		],
 		"comma-dangle": [
 			"error",
-			"never"
+			"always-multiline"
 		],
 		"arrow-spacing": [
 			"error",

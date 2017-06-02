@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Controls from './controls/Controls.jsx';
 // import RadioButtonsGroup from '../header/RadioButtonsGroup.jsx';
 // import langList from '../../lib/langList';
@@ -8,147 +9,112 @@ import observable from '../../lib/emitter';
 /**
  * Класс Item формирует и создаёт плитку с книгой и информацией о ней
  */
-class Item extends React.Component
-{
+class Item extends React.Component {
 	static defaultProps = {
-		content: 'normal'
+		content: 'normal',
 	};
 
 	static propTypes = {
 		list: React.PropTypes.object,
-		itemId: React.PropTypes.number
+		itemId: React.PropTypes.number,
 	};
 	
-	constructor( props )
-	{
-		super( props );
-		
-		this.save = this.save.bind( this );
-		this.change = this.change.bind( this );
-		this.disable = this.disable.bind( this );
-		this.remove = this.remove.bind( this );
-		
-		this.state = {
-			content: props.content
-		};
+	state = {
+		content: this.props.content,
+	};
+	
+	// TODO постараться убрать конструктор
+	constructor(props) {
+		super(props);
 		
 		this.changeElements = [];
 	}
 	
-	shouldComponentUpdate(nextProps, nextState)
-	{
-		if (this.props.data !== nextProps.data)
-		{
+	shouldComponentUpdate(nextProps, nextState) {
+		if (this.props.data !== nextProps.data) {
 			return true;
 		}
-		if (this.state.content !== nextState.content)
-		{
+		if (this.state.content !== nextState.content) {
 			return true;
 		}
-		
 		return false;
 	}
 	
 	/**
 	 * Сохранение изменений данных о книге
 	 */
-	save()
-	{
+	save = () => {
 		const { authorInput, nameInput, descriptionInput } = this.refs;
-		const { itemId } = this.props;
 		const body = {
 			'author': authorInput.value,
 			'name': nameInput.value,
-			'description': descriptionInput.value
+			'description': descriptionInput.value,
 		};
 		
 		ajax(
 			'PUT',
-			itemId,
+			`books/${this.props.itemId}`,
 			body,
 			true,
-			( response ) =>
-			{
-				const newListlistBook = JSON.parse( response );
-				
-				observable.emit( 'changeBook', newListlistBook );
-				
-				this.setState({
-					content: 'normal'
-				});
+			response => {
+				const newListlistBook = JSON.parse(response);
+				observable.emit('changeBook', newListlistBook);
+				this.setState({ content: 'normal' });
 			}
 		);
 	}
 	/**
 	 * Начать изменять данные о книге
 	 */
-	change()
-	{
-		this.setState({
-			content: 'change'
-		});
-	}
+	change = () => this.setState({ content: 'change' });
 	/**
 	 * Отменить изменения
 	 */
-	disable()
-	{
-		this.setState({
-			content: 'normal'
-		});
-	}
+	disable = () => this.setState({ content: 'normal' });
 	/**
 	 * Удалить плитку с книгой
 	 */
-	remove()
-	{
-		const itemId = this.props.itemId;
-		
+	remove = () => {
+		console.log(this.props.itemId);
 		ajax(
 			'DELETE',
-			itemId,
+			`books/${this.props.itemId}`,
 			null,
 			false,
-			( response ) =>
-			{
-				const book = JSON.parse( response );
-				
-				observable.emit( 'removeBook', book );
+			response => {
+				const book = JSON.parse(response);
+				observable.emit('removeBook', book);
 			}
 		);
 	}
 	
-	/*handleLangChange( lang )
-	{
-		console.log( lang );
+	/*handleLangChange(lang) {
+		console.log(lang);
 		this.setState({
 			lang: lang
 		});
 	}*/
 	
-	render()
-	{
+	render() {
+		// TODO разобраться с этой переменной
 		const props = this.props.list;
-		const { author, name, imageSrc, description, lang, link } = props;
+		const { id, author, name, imageSrc, description, lang, link } = props;
 		
-		if ( this.state.content === 'normal' )
-		{
+		if (this.state.content === 'normal') {
 			this.changeElements = [
 				<p ref="authorP">{author}</p>,
 				<p ref="nameP">{name}</p>,
 				// <p ref="langP">{lang}</p>,
-				<p ref="descriptionP">{description}</p>
+				<p ref="descriptionP">{description}</p>,
 			];
-		}
-		else if ( this.state.content === 'change' )
-		{
+		} else if (this.state.content === 'change') {
 			this.changeElements = [
 				<input type="text" name="author" defaultValue={author} ref="authorInput" />,
 				<input type="text" name="name" defaultValue={name} ref="nameInput" />,
-				// <RadioButtonsGroup group="changeBook-lang" radios={langList} checked={lang} 
-				// 	handleChangeBookLangChange={this.handleLangChange.bind(this)} 
+				// <RadioButtonsGroup group="changeBook-lang" radios={langList} checked={lang}
+				// 	handleChangeBookLangChange={this.handleLangChange.bind(this)}
 				// />,
-				<input type="text" name="description" defaultValue={description} ref="descriptionInput" />
+				<input type="text" name="description" defaultValue={description} ref="descriptionInput" />,
 			];
 		}
 		
@@ -168,17 +134,17 @@ class Item extends React.Component
 				<strong>Описание:</strong>
 				{this.changeElements[2]}
 				<a className="download" href={link} download>Скачать</a>
-				<Controls 
-					saveElements={this.save} 
-					changeElements={this.change} 
-					disableElements={this.disable} 
-					removeElements={this.remove} 
+				<Controls
+					saveElements={this.save}
+					changeElements={this.change}
+					disableElements={this.disable}
+					removeElements={this.remove}
 				/>
+				<Link to={`/books/${id}`}>Перейти к книге</Link>
+				{/*<Link to={`/${name}-${id}`}>Перейти к книге</Link>*/}
 			</div>
 		);
 	}
 }
 
-export {
-	Item as default
-};
+export default Item;
