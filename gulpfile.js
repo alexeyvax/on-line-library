@@ -23,8 +23,5 @@ gulp.task('styles', () => {
 		// .pipe(notify('Styles is ready!'));
 });
 
-gulp.task('watch', () => {
-	gulp.watch('styles/**/*.less', ['styles']);
-});
-
+gulp.task('watch', () => gulp.watch('styles/**/*.less', ['styles']));
 gulp.task('default', ['watch', 'styles']);

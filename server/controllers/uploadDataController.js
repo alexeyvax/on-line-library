@@ -6,7 +6,11 @@ const libToTranslite = require('../toTranslite');
 
 module.exports.upload = function(req, res) {
 	/** Число, которое преобразует десятичную дробь в целое число */
+<<<<<<< HEAD
 	const CONVERT_NUMBER = 100; // to constant
+=======
+	const CONVERT_NUMBER = 100; // constant
+>>>>>>> 589a424853b31486c6ab2b424f9c543124f35f40
 	const form = new formidable.IncomingForm();
 	const currentUploadedData = Object.create(null);
 	const pathToDirname = Path.join(__dirname, '../../');
