@@ -1,1 +1,254 @@
-[]
+[
+  {
+    "author": "ftgyuhj",
+    "name": "ghj",
+    "description": "hyuji",
+    "lang": "any",
+    "imageSrc": "/books/eloquentjavascript_ru_1496510515088/image.png",
+    "link": "/books/eloquentjavascript_ru_1496510515088/eloquentjavascript_ru.pdf",
+    "id": 1496510515088
+  },
+  {
+    "author": "re5tyse",
+    "name": "drftgh",
+    "description": "drftghj",
+    "lang": "eng",
+    "imageSrc": "/books/Pro_React_1496510720052/image.png",
+    "link": "/books/Pro_React_1496510720052/Pro_React.pdf",
+    "id": 1496510720052
+  },
+  {
+    "author": "drtfg",
+    "name": "tfgyhrd",
+    "description": "rtyh",
+    "lang": "any",
+    "imageSrc": "/books/eloquentjavascript_ru_1496510732908/image.png",
+    "link": "/books/eloquentjavascript_ru_1496510732908/eloquentjavascript_ru.pdf",
+    "id": 1496510732908
+  },
+  {
+    "author": "wesrtye",
+    "name": "4r5ty",
+    "description": "ertyui",
+    "lang": "any",
+    "imageSrc": "/books/JavaScript_1496510821423/image.png",
+    "link": "/books/JavaScript_1496510821423/JavaScript.pdf",
+    "id": 1496510821423
+  },
+  {
+    "author": "dfghr",
+    "name": "tfghe",
+    "description": "rtfgh",
+    "lang": "any",
+    "imageSrc": "/books/Design_Patterns_1496512058257/image.png",
+    "link": "/books/Design_Patterns_1496512058257/Design_Patterns.pdf",
+    "id": 1496512058257
+  },
+  {
+    "author": "fcgh",
+    "name": "fgh",
+    "description": "dfghj",
+    "lang": "any",
+    "imageSrc": "/books/Pro_React_1496512229360/image.png",
+    "link": "/books/Pro_React_1496512229360/Pro_React.pdf",
+    "id": 1496512229360
+  },
+  {
+    "author": "fdgth",
+    "name": "dftgyhd",
+    "description": "fgh",
+    "lang": "ru",
+    "imageSrc": "/books/eloquentjavascript_ru_1496512257684/image.png",
+    "link": "/books/eloquentjavascript_ru_1496512257684/eloquentjavascript_ru.pdf",
+    "id": 1496512257684
+  },
+  {
+    "author": "sedrtfgyhjer",
+    "name": "tyu",
+    "description": "esrtyu",
+    "lang": "ru",
+    "imageSrc": "/books/stoyan_stefanov_-_javascript_shablony_-_2011_1496512318158/image.png",
+    "link": "/books/stoyan_stefanov_-_javascript_shablony_-_2011_1496512318158/stoyan_stefanov_-_javascript_shablony_-_2011.pdf",
+    "id": 1496512318158
+  },
+  {
+    "author": "sdeftg",
+    "name": "erftgfy",
+    "description": "rtgy",
+    "lang": "any",
+    "imageSrc": "/books/Pro_React_1496512334984/image.png",
+    "link": "/books/Pro_React_1496512334984/Pro_React.pdf",
+    "id": 1496512334984
+  },
+  {
+    "author": "rtyur",
+    "name": "tyue",
+    "description": "rtyui",
+    "lang": "eng",
+    "imageSrc": "/books/Nikolas_Zakas_-_JavaScript_dlya_professionalnykh_veb-razrabotchikov_3-e_izd__-_2015_1496512740770/image.png",
+    "link": "/books/Nikolas_Zakas_-_JavaScript_dlya_professionalnykh_veb-razrabotchikov_3-e_izd__-_2015_1496512740770/Nikolas_Zakas_-_JavaScript_dlya_professionalnykh_veb-razrabotchikov_3-e_izd__-_2015.pdf",
+    "id": 1496512740770
+  },
+  {
+    "author": "dtfyg",
+    "name": "fghj",
+    "description": "rtrfyh",
+    "lang": "ru",
+    "imageSrc": "/books/eloquentjavascript_ru_1496521235622/image.png",
+    "link": "/books/eloquentjavascript_ru_1496521235622/eloquentjavascript_ru.pdf",
+    "id": 1496521235622
+  },
+  {
+    "author": "edrdty",
+    "name": "ertyguh",
+    "description": "tygu",
+    "lang": "eng",
+    "imageSrc": "/books/SQL_the_Complete_Reference_proglib_1496521303295/image.png",
+    "link": "/books/SQL_the_Complete_Reference_proglib_1496521303295/SQL_the_Complete_Reference_proglib.pdf",
+    "id": 1496521303295
+  },
+  {
+    "author": "ftgyhuj",
+    "name": "dfg",
+    "description": "sdfghj",
+    "lang": "any",
+    "imageSrc": "/books/JavaScript_1496521830370/image.png",
+    "link": "/books/JavaScript_1496521830370/JavaScript.pdf",
+    "id": 1496521830370
+  },
+  {
+    "author": "dfcgvbhnj",
+    "name": "dxcfvgbhnj",
+    "description": "dcfvgbhj",
+    "lang": "ru",
+    "imageSrc": "/books/eloquentjavascript_ru_1496522260856/image.png",
+    "link": "/books/eloquentjavascript_ru_1496522260856/eloquentjavascript_ru.pdf",
+    "id": 1496522260856
+  },
+  {
+    "author": "dfcgvbhnj",
+    "name": "dxcfvgbhnj",
+    "description": "dcfvgbhj",
+    "lang": "ru",
+    "imageSrc": "/books/eloquentjavascript_ru_1496522260623/image.png",
+    "link": "/books/eloquentjavascript_ru_1496522260623/eloquentjavascript_ru.pdf",
+    "id": 1496522260623
+  },
+  {
+    "author": "dfcgvbhnj",
+    "name": "dxcfvgbhnj",
+    "description": "dcfvgbhj",
+    "lang": "ru",
+    "imageSrc": "/books/eloquentjavascript_ru_1496522260527/image.png",
+    "link": "/books/eloquentjavascript_ru_1496522260527/eloquentjavascript_ru.pdf",
+    "id": 1496522260527
+  },
+  {
+    "author": "dfcgvbhnj",
+    "name": "dxcfvgbhnj",
+    "description": "dcfvgbhj",
+    "lang": "ru",
+    "imageSrc": "/books/eloquentjavascript_ru_1496522261023/image.png",
+    "link": "/books/eloquentjavascript_ru_1496522261023/eloquentjavascript_ru.pdf",
+    "id": 1496522261023
+  },
+  {
+    "author": "dfcgvbhnj",
+    "name": "dxcfvgbhnj",
+    "description": "dcfvgbhj",
+    "lang": "ru",
+    "imageSrc": "/books/eloquentjavascript_ru_1496522261220/image.png",
+    "link": "/books/eloquentjavascript_ru_1496522261220/eloquentjavascript_ru.pdf",
+    "id": 1496522261220
+  },
+  {
+    "author": "dfcgvbhnj",
+    "name": "dxcfvgbhnj",
+    "description": "dcfvgbhj",
+    "lang": "ru",
+    "imageSrc": "/books/eloquentjavascript_ru_1496522261389/image.png",
+    "link": "/books/eloquentjavascript_ru_1496522261389/eloquentjavascript_ru.pdf",
+    "id": 1496522261389
+  },
+  {
+    "author": "dfcgvbhnj",
+    "name": "dxcfvgbhnj",
+    "description": "dcfvgbhj",
+    "lang": "ru",
+    "imageSrc": "/books/eloquentjavascript_ru_1496522262112/image.png",
+    "link": "/books/eloquentjavascript_ru_1496522262112/eloquentjavascript_ru.pdf",
+    "id": 1496522262112
+  },
+  {
+    "author": "cfvgbh",
+    "name": "SDFGH",
+    "description": "dfghj",
+    "lang": "eng",
+    "imageSrc": "/books/Itan_Braun_-_Veb-razrabotka_s_primeneniem_Node_i_Express_1496522360198/image.png",
+    "link": "/books/Itan_Braun_-_Veb-razrabotka_s_primeneniem_Node_i_Express_1496522360198/Itan_Braun_-_Veb-razrabotka_s_primeneniem_Node_i_Express.pdf",
+    "id": 1496522360198
+  },
+  {
+    "author": "cfvgbh",
+    "name": "SDFGH",
+    "description": "dfghj",
+    "lang": "eng",
+    "imageSrc": "/books/Itan_Braun_-_Veb-razrabotka_s_primeneniem_Node_i_Express_1496522360352/image.png",
+    "link": "/books/Itan_Braun_-_Veb-razrabotka_s_primeneniem_Node_i_Express_1496522360352/Itan_Braun_-_Veb-razrabotka_s_primeneniem_Node_i_Express.pdf",
+    "id": 1496522360352
+  },
+  {
+    "author": "cfvgbh",
+    "name": "SDFGH",
+    "description": "dfghj",
+    "lang": "eng",
+    "imageSrc": "/books/Itan_Braun_-_Veb-razrabotka_s_primeneniem_Node_i_Express_1496522360730/image.png",
+    "link": "/books/Itan_Braun_-_Veb-razrabotka_s_primeneniem_Node_i_Express_1496522360730/Itan_Braun_-_Veb-razrabotka_s_primeneniem_Node_i_Express.pdf",
+    "id": 1496522360730
+  },
+  {
+    "author": "tfgyuh",
+    "name": "fcvgbh",
+    "description": "vgbhjn",
+    "lang": "eng",
+    "imageSrc": "/books/Design_Patterns_1496524986326/image.png",
+    "link": "/books/Design_Patterns_1496524986326/Design_Patterns.pdf",
+    "id": 1496524986326
+  },
+  {
+    "author": "eregtrdf",
+    "name": "tg",
+    "description": "dfrtgry",
+    "lang": "any",
+    "imageSrc": "/books/algoritms_1496525022623/image.png",
+    "link": "/books/algoritms_1496525022623/algoritms.pdf",
+    "id": 1496525022623
+  },
+  {
+    "author": "fgbh",
+    "name": "fdvvgbh",
+    "description": "fgbh",
+    "lang": "ru",
+    "imageSrc": "/books/Nikolas_Zakas_-_JavaScript_dlya_professionalnykh_veb-razrabotchikov_3-e_izd__-_2015_1496525106888/image.png",
+    "link": "/books/Nikolas_Zakas_-_JavaScript_dlya_professionalnykh_veb-razrabotchikov_3-e_izd__-_2015_1496525106888/Nikolas_Zakas_-_JavaScript_dlya_professionalnykh_veb-razrabotchikov_3-e_izd__-_2015.pdf",
+    "id": 1496525106888
+  },
+  {
+    "author": "dcvf",
+    "name": "dfvg",
+    "description": "scdrfvtgbh",
+    "lang": "any",
+    "imageSrc": "/books/JavaScript_1496525143521/image.png",
+    "link": "/books/JavaScript_1496525143521/JavaScript.pdf",
+    "id": 1496525143521
+  },
+  {
+    "author": "dfge",
+    "name": "rt",
+    "description": "ertfg",
+    "lang": "any",
+    "imageSrc": "/books/Algoritmy_Teoria_i_prakticheskoe_primenenie_1496525165736/image.png",
+    "link": "/books/Algoritmy_Teoria_i_prakticheskoe_primenenie_1496525165736/Algoritmy_Teoria_i_prakticheskoe_primenenie.pdf",
+    "id": 1496525165736
+  }
+]

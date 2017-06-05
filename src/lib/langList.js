@@ -2,18 +2,16 @@
 const langList = [
 	{
 		title: 'Русский',
-		value: 'ru'
+		value: 'ru',
 	},
 	{
 		title: 'Английский',
-		value: 'eng'
+		value: 'eng',
 	},
 	{
 		title: 'Не выбран',
-		value: 'any'
-	}
+		value: 'any',
+	},
 ];
 
-export {
-	langList as default
-};
+export default langList;

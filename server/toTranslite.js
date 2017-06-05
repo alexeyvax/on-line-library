@@ -4,7 +4,6 @@
  * 
  * @module
  */
-
 const alphabet = {
 	'а': 'a',
 	'б': 'b',
@@ -38,8 +37,8 @@ const alphabet = {
 	'ь': '`',
 	'э': 'e',
 	'ю': 'yu',
-	'я': 'ya'
-}; // алфавит транслита
+	'я': 'ya',
+};
 
 /**
  * Перевод строки в транслит
@@ -47,33 +46,23 @@ const alphabet = {
  * @param {String} str Строка для перевода
  * @returns {String} Переведённая строка
  */
-function toTranslite(str)
-{
+function toTranslite(str) {
 	let newStr = '';
 	const strToArr = str.split('');
 	
-	for (let i = 0, len = strToArr.length; i < len; i++)
-	{
-		if ( !strToArr[i].match(/[^а-яё]/i) )
-		{
+	for (let i = 0, len = strToArr.length; i < len; i++) {
+		if (!strToArr[i].match(/[^а-яё]/i)) {
 			// Учитывать регистр
-			if ( strToArr[i] === strToArr[i].toUpperCase() )
-			{
+			if (strToArr[i] === strToArr[i].toUpperCase()) {
 				const toUpper = alphabet[strToArr[i].toLowerCase()];
-				
 				newStr += toUpper.toUpperCase();
-			}
-			else
-			{
+			} else {
 				newStr += alphabet[strToArr[i]];
 			}
-		}
-		else
-		{
+		} else {
 			newStr += strToArr[i];
-		}	
+		}
 	}
-	
 	return newStr;
 }
 
