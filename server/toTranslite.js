@@ -1,8 +1,5 @@
 /**
- * Модуль для перевода строк в транслит,
- * с учётом регистра строки
- * 
- * @module
+ * Translate string to translit with consider register letters
  */
 const alphabet = {
 	'а': 'a',
@@ -40,19 +37,13 @@ const alphabet = {
 	'я': 'ya',
 };
 
-/**
- * Перевод строки в транслит
- * 
- * @param {String} str Строка для перевода
- * @returns {String} Переведённая строка
- */
 function toTranslite(str) {
 	let newStr = '';
 	const strToArr = str.split('');
 	
 	for (let i = 0, len = strToArr.length; i < len; i++) {
 		if (!strToArr[i].match(/[^а-яё]/i)) {
-			// Учитывать регистр
+			// consider register letters
 			if (strToArr[i] === strToArr[i].toUpperCase()) {
 				const toUpper = alphabet[strToArr[i].toLowerCase()];
 				newStr += toUpper.toUpperCase();

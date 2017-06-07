@@ -6,7 +6,7 @@ const gulp = require('gulp'),
 	less = require('gulp-less'),
 	path = require('path');
 
-// Компиляция и сборка less
+// Compile and bundle less files
 gulp.task('styles', () => {
 	gulp.src('styles/**/*.less')
 		.pipe(less({

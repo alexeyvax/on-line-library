@@ -5,7 +5,7 @@ import ajax from '../../lib/ajax';
 import RadioButtonsGroup from './RadioButtonsGroup';
 
 /**
- * Класс Upload формирует форму для загрузки книги
+ * Upload book
  */
 class Upload extends React.PureComponent {
 	static defaultProps = {
@@ -20,17 +20,11 @@ class Upload extends React.PureComponent {
 		buttonUploadIsDisabled: this.props.buttonUploadIsDisabled,
 	};
 	
-	/**
-	 * Вызов окна для загрузки новой книги
-	 */
+	/** Call the window to upload a new book */
 	callUploadInput = () => this.refs.upload.click();
-	/**
-	 * Изменение языка при загрузке новой книги
-	 */
+	/** Change language */
 	handleLangChange = lang => this.setState({ lang: lang });
-	/**
-	 * Загрузка новой книги
-	 */
+	/** Upload new book */
 	dataSubmit = event => {
 		event.preventDefault();
 		const { lang } = this.state;
@@ -60,24 +54,20 @@ class Upload extends React.PureComponent {
 			formData.append('lang', lang);
 			
 			if (typeBookIsPdf) {
-				try {
-					this.setState({ buttonUploadIsDisabled: true });
-					ajax(method, action, formData, false, response => {
-						observable.emit('addBook', JSON.parse(response));
-						form.reset();
-						this.setState({
-							lang: 'any',
-							buttonUploadIsDisabled: false,
-						});
+				this.setState({ buttonUploadIsDisabled: true });
+				ajax(method, action, formData, false, response => {
+					observable.emit('addBook', JSON.parse(response));
+					form.reset();
+					this.setState({
+						lang: 'any',
+						buttonUploadIsDisabled: false,
 					});
-				} catch (err) {
-					console.log(err, 'alalala');
-				}
+				});
 			} else {
-				alert('Загрузите пожалуйста книгу в формате .pdf');
+				alert('Please download the book in the format .pdf');
 			}
 		} else {
-			alert('Заполните все обязательные поля');
+			alert('Please fill in all required fields');
 		}
 	}
 	
@@ -94,7 +84,7 @@ class Upload extends React.PureComponent {
 					id="upload-menu"
 					name="upload-menu"
 				/>
-				<label htmlFor="upload-menu">Загрузить новую книгу</label>
+				<label htmlFor="upload-menu">Upload new book</label>
 				<ul className="upload-menu">
 					<li>
 						<input
@@ -103,39 +93,39 @@ class Upload extends React.PureComponent {
 							placeholder="Upload your file"
 							multiple="multiple" ref="upload"
 						/>
-						<label>Загрузить новую книгу в формате PDF</label>
+						<label>Upload new book in format PDF</label>
 						<button
 							type="button"
 							onClick={this.callUploadInput}
 						>
-							Выбрать *
+							Select *
 						</button>
 					</li><li>
 						<input
 							type="text"
 							name="author"
-							placeholder="Автор книги *"
+							placeholder="Author` *"
 							ref="author"
 						/>
-						<label>Введите автора книги *</label>
+						<label>Enter the author of the book *</label>
 					</li><li>
 						<input
 							type="text"
 							name="name"
-							placeholder="Название книги *"
+							placeholder="Title *"
 							ref="name"
 						/>
-						<label>Введите название книги *</label>
+						<label>Enter the title of the book *</label>
 					</li><li>
 						<input
 							type="text"
 							name="description"
-							placeholder="Описание книги *"
+							placeholder="Description *"
 							ref="description"
 						/>
-						<label>Введите описание книги *</label>
+						<label>Enter description of the book *</label>
 					</li><li className="radio-group">
-						<span>Выберите язык книги</span>
+						<span>Select to lang of the book</span>
 						<RadioButtonsGroup
 							group="addBook-lang"
 							radios={langList}
@@ -148,7 +138,7 @@ class Upload extends React.PureComponent {
 							onClick={this.dataSubmit}
 							disabled={this.state.buttonUploadIsDisabled}
 						>
-							Загрузить
+							Upload
 						</button>
 					</li>
 				</ul>

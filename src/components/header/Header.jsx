@@ -3,9 +3,8 @@ import Search from './Search.jsx';
 import Upload from './Upload.jsx';
 
 /**
- * Класс Header формирует шапку приложения
+ * Header application
  */
-
 class Header extends React.PureComponent {
 	render() {
 		return (

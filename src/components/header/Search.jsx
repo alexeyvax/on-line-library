@@ -4,7 +4,7 @@ import langList from '../../lib/langList';
 import RadioButtonsGroup from './RadioButtonsGroup.jsx';
 
 /**
- * Класс Search поиск книг
+ * Search books
  */
 class Search extends React.PureComponent {
 	static defaultProps = {
@@ -15,9 +15,7 @@ class Search extends React.PureComponent {
 		lang: this.props.lang,
 	};
 	
-	/**
-	 * Запуск поиска по введённым параметрам
-	 */
+	/** Start search by entered parameters */
 	handleChange = () => {
 		const { searchAuthor, searchName } = this.refs;
 		
@@ -28,9 +26,7 @@ class Search extends React.PureComponent {
 			this.state.lang,
 		);
 	}
-	/**
-	 * Запуск сортировки книг по языку
-	 */
+	/** Start sorting by language */
 	chooseLang = lang => {
 		const { searchAuthor, searchName } = this.refs;
 		
@@ -47,26 +43,26 @@ class Search extends React.PureComponent {
 		return (
 			<div className="search">
 				<input type="checkbox" id="search" name="search" />
-				<label htmlFor="search">Поиск книги</label>
+				<label htmlFor="search">Search book</label>
 				<ul className="search-menu">
 					<li>
 						<input
 							type="text"
 							onChange={this.handleChange}
-							placeholder="Поиск книги по автору"
+							placeholder="Search for books by author"
 							ref="searchAuthor"
 						/>
-						<label htmlFor="search-menu">Поиск книги</label>
+						<label htmlFor="search-menu">Search book</label>
 					</li><li>
 						<input
 							type="text"
 							onChange={this.handleChange}
-							placeholder="Поиск книги по названию"
+							placeholder="Search for books by title"
 							ref="searchName"
 						/>
-						<label htmlFor="search-menu">Поиск книги</label>
+						<label htmlFor="search-menu">Search book</label>
 					</li><li className="radio-group">
-						<span>Поиск книги по языку</span>
+						<span>Search for books by lang</span>
 						<RadioButtonsGroup
 							group="search-lang"
 							radios={langList}

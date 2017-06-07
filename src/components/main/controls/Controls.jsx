@@ -1,7 +1,7 @@
 import React from 'react';
 
 /**
- * Класс Controls кнопки управления
+ * Book control buttons
  */
 class Controls extends React.PureComponent {
 	static defaultProps = {

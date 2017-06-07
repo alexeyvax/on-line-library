@@ -2,7 +2,7 @@ import React from 'react';
 import Item from './Item';
 
 /**
- * Класс List формирует и создаёт список из названий книг
+ * Section with list of titles of books
  */
 class List extends React.PureComponent {
 	static propTypes = {

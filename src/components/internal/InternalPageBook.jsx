@@ -17,20 +17,20 @@ const InternalPageBook = (...props) => {
 	return (
 		<section className="internal-page">
 			{/*<a href={`/#${id}`}>Вернуться назад</a>*/}
-			<button onClick={goToBack}>Вернуться назад</button>
+			<button onClick={goToBack}>Go to back</button>
 			<img src={imageSrc} />
-			<strong>Автор:</strong>
+			<strong>Author:</strong>
 			<p>{author}</p>
 			<br />
-			<strong>Название:</strong>
+			<strong>Title book:</strong>
 			<p>{name}</p>
 			<br />
-			<strong>Язык книги:</strong>
+			<strong>Lang book:</strong>
 			<p>{lang}</p>
 			<br />
-			<strong>Описание:</strong>
+			<strong>Description:</strong>
 			<p>{description}</p>
-			<a className="download" href={link} download>Скачать</a>
+			<a className="download" href={link} download>download</a>
 		</section>
 	);
 };

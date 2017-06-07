@@ -5,7 +5,7 @@ const PDFImage = require('pdf-image').PDFImage;
 const libToTranslite = require('../toTranslite');
 
 module.exports.upload = function(req, res) {
-	/** Число, которое преобразует десятичную дробь в целое число */
+	/** Number which convert decimal to integer */
 	const CONVERT_NUMBER = 100; // to constant
 	const form = new formidable.IncomingForm();
 	const currentUploadedData = Object.create(null);
@@ -29,10 +29,10 @@ module.exports.upload = function(req, res) {
 		const wayToUploadPdf = `${wayToCreatedDir}/${translationNameToTranslit}`;
 		
 		if (!fs.existsSync(wayToCreatedDir)) {
-			fs.mkdirSync(wayToCreatedDir); // создание директории
+			fs.mkdirSync(wayToCreatedDir); // create dir
 		}
 		
-		// сохранение файла в нужной директории
+		// save file in needed folder
 		fs.rename(file.path, Path.join(`${form.uploadDir}/${nameForCreatedDir}`, translationNameToTranslit));
 		
 		const createImage = new PDFImage(wayToUploadPdf);

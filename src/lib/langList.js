@@ -1,15 +1,15 @@
-/** Список возможных языков */
+/** List of used languages */
 const langList = [
 	{
-		title: 'Русский',
+		title: 'Russian',
 		value: 'ru',
 	},
 	{
-		title: 'Английский',
+		title: 'English',
 		value: 'eng',
 	},
 	{
-		title: 'Не выбран',
+		title: 'Not selected',
 		value: 'any',
 	},
 ];

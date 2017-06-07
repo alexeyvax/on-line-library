@@ -2,7 +2,7 @@ import React from 'react';
 import Item from './Item';
 
 /**
- * Класс Main формирует основной раздел со списком книг
+ * Main section with a list of books
  */
 class Main extends React.PureComponent {
 	static propTypes = {
@@ -29,11 +29,7 @@ class Main extends React.PureComponent {
 				: <li className="empty">Совпадений не найдено</li>;
 		}
 		
-		return (
-			<ul className="list-books">
-				{bookTemplate}
-			</ul>
-		);
+		return <ul className="list-books">{bookTemplate}</ul>;
 	}
 }
 

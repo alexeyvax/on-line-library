@@ -6,7 +6,7 @@ import Main from './main/Main.jsx';
 import { withRouter } from 'react-router';
 
 /**
- * Класс App с которого начинается приложение
+ * App the main class in application
  */
 class App extends React.PureComponent {
 	static propTypes = {
@@ -39,9 +39,7 @@ class App extends React.PureComponent {
 	}
 	
 	componentDidMount() {
-		/**
-		 * Добавление книги в библиотеку
-		 */
+		/** Add book in library */
 		observable.addListener('addBook', item => {
 			this.setState(prevState => ({
 				list: [...prevState.list, item],
@@ -50,13 +48,11 @@ class App extends React.PureComponent {
 			observable.emit('updateListBooks', this.state.list);
 		});
 		
-		/**
-		 * Поиск книги по автору и названию, а так же сортировка по языку
-		 */
+		/** Search book by author and title, and sorting by language */
 		observable.addListener('searchBook', (author, name, lang) => {
-			/** Список по которому проходит поиск(мутирующий) */
+			/** List for search book (mutating) */
 			let filterList = this.state.search;
-			/** Приведение в нижний регистр */
+			/** To lover case author and name book */
 			const searchAuthor = author.trim().toLowerCase();
 			const searchName = name.trim().toLowerCase();
 			
@@ -65,7 +61,7 @@ class App extends React.PureComponent {
 			let searchIsEmpty = true;
 			
 			switch (true) {
-				/** Если заполнено имя автора и название книги */
+				/** If the author's name and book title are filled */
 				case authorLength > 0 && nameLength > 0:
 					searchIsEmpty = true;
 					
@@ -84,7 +80,7 @@ class App extends React.PureComponent {
 					}
 					
 					break;
-				/** Если только заполнено имя автора */
+				/** If only the author`s name is filled */
 				case authorLength > 0 && !nameLength > 0:
 					searchIsEmpty = true;
 					
@@ -102,7 +98,7 @@ class App extends React.PureComponent {
 					}
 					
 					break;
-				/** Если только заполнено название книги */
+				/** If only the title of book is filled */
 				case !authorLength > 0 && nameLength > 0:
 					searchIsEmpty = true;
 					
@@ -120,8 +116,7 @@ class App extends React.PureComponent {
 					}
 					
 					break;
-				/** Сортировка по языку книги 
-				 * и не заполнены ни имя автора ни название книги */
+				/** Sorted by book language and not filled either author name or book title */
 				default:
 					if (lang !== 'any') {
 						filterList = filterList.filter(item => {
@@ -135,9 +130,7 @@ class App extends React.PureComponent {
 			});
 		});
 		
-		/**
-		 * Удаление книги
-		 */
+		/** Remove book */
 		observable.addListener('removeBook', ([index]) => {
 			this.setState(prevState => ({
 				list: [...prevState.list.filter((_, i) => i !== index)],
@@ -146,9 +139,7 @@ class App extends React.PureComponent {
 			observable.emit('updateListBooks', this.state.list);
 		});
 		
-		/**
-		 * Изменение информации о книге
-		 */
+		/** Edit info for book */
 		observable.addListener('changeBook', ([index, needle]) => {
 			this.setState(prevState => ({
 				list: [

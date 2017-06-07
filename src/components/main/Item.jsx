@@ -7,7 +7,7 @@ import ajax from '../../lib/ajax';
 import observable from '../../lib/emitter';
 
 /**
- * Класс Item формирует и создаёт плитку с книгой и информацией о ней
+ * Block with book with info about it
  */
 class Item extends React.PureComponent {
 	static defaultProps = {
@@ -23,9 +23,7 @@ class Item extends React.PureComponent {
 		content: this.props.content,
 	};
 	
-	/**
-	 * Сохранение изменений данных о книге
-	 */
+	/** Save changes about book */
 	save = () => {
 		const { authorInput, nameInput, descriptionInput } = this.refs;
 		const body = {
@@ -46,17 +44,11 @@ class Item extends React.PureComponent {
 			}
 		);
 	}
-	/**
-	 * Начать изменять данные о книге
-	 */
+	/** Start to change info about book */
 	change = () => this.setState({ content: 'change' });
-	/**
-	 * Отменить изменения
-	 */
+	/** Cancel changes */
 	disable = () => this.setState({ content: 'normal' });
-	/**
-	 * Удалить плитку с книгой
-	 */
+	/** Remove blok with book */
 	remove = () => {
 		ajax(
 			'DELETE',

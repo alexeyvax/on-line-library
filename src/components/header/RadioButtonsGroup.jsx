@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 
 /**
- * Класс RadioButtonsGroup создание радио кнопок
+ * RadioButtonsGroup create group radio buttons
  */
 class RadioButtonsGroup extends React.Component {
 	static propTypes = {
@@ -13,9 +13,7 @@ class RadioButtonsGroup extends React.Component {
 		checked: PropTypes.string.isRequired,
 	};
 	
-	/**
-	 * Определение для чего происходит смена языка
-	 */
+	/** Definition of what the language changes for */
 	handleLangChange = event => {
 		if (this.props.handleAddBookLangChange) {
 			this.props.handleAddBookLangChange(event.target.value);
