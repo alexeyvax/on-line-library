@@ -1,15 +1,16 @@
 import React from 'react';
 import observable from '../../lib/emitter';
-import langList from '../../lib/langList';
+import langList from '../../constants/langList';
 import ajax from '../../lib/ajax';
 import RadioButtonsGroup from './RadioButtonsGroup';
+import { ADD_BOOK, PDF_EXTANTION, DEFAULT_LANG } from '../../constants';
 
 /**
  * Upload book
  */
 class Upload extends React.PureComponent {
 	static defaultProps = {
-		lang: 'any',
+		lang: DEFAULT_LANG,
 		visibility: false,
 		buttonUploadIsDisabled: false,
 	};
@@ -43,7 +44,7 @@ class Upload extends React.PureComponent {
 				const file = fileList[i];
 				const getTypeFileOnString = -4;
 				
-				(file.name.substr(getTypeFileOnString) === '.pdf')
+				(file.name.substr(getTypeFileOnString) === PDF_EXTANTION)
 					? formData.append('uploads', file, file.name)
 					: typeBookIsPdf = false;
 			}
@@ -56,10 +57,10 @@ class Upload extends React.PureComponent {
 			if (typeBookIsPdf) {
 				this.setState({ buttonUploadIsDisabled: true });
 				ajax(method, action, formData, false, response => {
-					observable.emit('addBook', JSON.parse(response));
+					observable.emit(ADD_BOOK, JSON.parse(response));
 					form.reset();
 					this.setState({
-						lang: 'any',
+						lang: DEFAULT_LANG,
 						buttonUploadIsDisabled: false,
 					});
 				});

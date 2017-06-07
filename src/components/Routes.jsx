@@ -9,11 +9,12 @@ import observable from '../lib/emitter';
 import App from './App.jsx';
 import InternalPageBook from './internal/InternalPageBook.jsx';
 import PageNotFound from './pageNotFound/PageNotFound.jsx';
+import { UPDATE_LIST_BOOKS } from '../constants';
 
 const Routes = props => {
 	let { listBooks } = props;
 	/** Update data list of books */
-	observable.addListener('updateListBooks', updateListBook => {
+	observable.addListener(UPDATE_LIST_BOOKS, updateListBook => {
 		listBooks = updateListBook;
 	});
 	

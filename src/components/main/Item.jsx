@@ -2,16 +2,22 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Controls from './controls/Controls.jsx';
 import RadioButtonsGroup from '../header/RadioButtonsGroup.jsx';
-import langList from '../../lib/langList';
+import langList from '../../constants/langList';
 import ajax from '../../lib/ajax';
 import observable from '../../lib/emitter';
+import {
+	CONTENT_BOOK_DEFAULT,
+	CONTENT_BOOK_EDIT,
+	EDIT_BOOK,
+	REMOVE_BOOK,
+} from '../../constants';
 
 /**
  * Block with book with info about it
  */
 class Item extends React.PureComponent {
 	static defaultProps = {
-		content: 'normal',
+		content: CONTENT_BOOK_DEFAULT,
 	};
 
 	static propTypes = {
@@ -41,15 +47,15 @@ class Item extends React.PureComponent {
 			true,
 			response => {
 				const newListlistBook = JSON.parse(response);
-				observable.emit('changeBook', newListlistBook);
-				this.setState({ content: 'normal' });
+				observable.emit(EDIT_BOOK, newListlistBook);
+				this.setState({ content: CONTENT_BOOK_DEFAULT });
 			}
 		);
 	}
 	/** Start to change info about book */
-	change = () => this.setState({ content: 'change' });
+	change = () => this.setState({ content: CONTENT_BOOK_EDIT });
 	/** Cancel changes */
-	disable = () => this.setState({ content: 'normal' });
+	disable = () => this.setState({ content: CONTENT_BOOK_DEFAULT });
 	/** Remove blok with book */
 	remove = () => {
 		ajax(
@@ -59,7 +65,7 @@ class Item extends React.PureComponent {
 			false,
 			response => {
 				const book = JSON.parse(response);
-				observable.emit('removeBook', book);
+				observable.emit(REMOVE_BOOK, book);
 			}
 		);
 	}
@@ -70,14 +76,14 @@ class Item extends React.PureComponent {
 		const { id, author, name, imageSrc, description, lang, link } = this.props.list;
 		let changeElements = {};
 		
-		if (this.state.content === 'normal') {
+		if (this.state.content === CONTENT_BOOK_DEFAULT) {
 			changeElements = {
 				author: <p ref="authorP">{author}</p>,
 				name: <p ref="nameP">{name}</p>,
 				lang: <p ref="langP">{lang}</p>,
 				description: <p ref="descriptionP">{description}</p>,
 			};
-		} else if (this.state.content === 'change') {
+		} else if (this.state.content === CONTENT_BOOK_EDIT) {
 			changeElements = {
 				author: <input
 					type="text"
@@ -93,7 +99,7 @@ class Item extends React.PureComponent {
 					group="changeBook-lang"
 					radios={langList}
 					checked={this.state.lang}
-					handleChangeBookLangChange={this.handleLangChange}/>,
+					handleEditBookLangChange={this.handleLangChange}/>,
 				description: <input
 					type="text"
 					name="description"

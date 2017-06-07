@@ -4,6 +4,14 @@ import Header from './header/Header.jsx';
 import List from './list/List.jsx';
 import Main from './main/Main.jsx';
 import { withRouter } from 'react-router';
+import {
+	ADD_BOOK,
+	REMOVE_BOOK,
+	EDIT_BOOK,
+	SEARCH_BOOK,
+	UPDATE_LIST_BOOKS,
+	DEFAULT_LANG,
+} from '../constants';
 
 /**
  * App the main class in application
@@ -26,9 +34,9 @@ class App extends React.PureComponent {
 			<section>
 				<Header />
 				<List
-					ref="list"
 					data={list}
 					searchIsEmpty={searchIsEmpty}
+					ref="list"
 				/>
 				<Main
 					data={list}
@@ -40,16 +48,16 @@ class App extends React.PureComponent {
 	
 	componentDidMount() {
 		/** Add book in library */
-		observable.addListener('addBook', item => {
+		observable.addListener(ADD_BOOK, item => {
 			this.setState(prevState => ({
 				list: [...prevState.list, item],
 				search: [...prevState.list, item],
 			}));
-			observable.emit('updateListBooks', this.state.list);
+			observable.emit(UPDATE_LIST_BOOKS, this.state.list);
 		});
 		
 		/** Search book by author and title, and sorting by language */
-		observable.addListener('searchBook', (author, name, lang) => {
+		observable.addListener(SEARCH_BOOK, (author, name, lang) => {
 			/** List for search book (mutating) */
 			let filterList = this.state.search;
 			/** To lover case author and name book */
@@ -68,7 +76,7 @@ class App extends React.PureComponent {
 					filterList = filterList.filter(item => {
 						if (item.author.toLowerCase().match(searchAuthor)
 							&& item.name.toLowerCase().match(searchName)) {
-							if (lang !== 'any') {
+							if (lang !== DEFAULT_LANG) {
 								return item.lang === lang;
 							}
 							return item;
@@ -86,7 +94,7 @@ class App extends React.PureComponent {
 					
 					filterList = filterList.filter(item => {
 						if (item.author.toLowerCase().match(searchAuthor)) {
-							if (lang !== 'any') {
+							if (lang !== DEFAULT_LANG) {
 								return item.lang === lang;
 							}
 							return item;
@@ -104,7 +112,7 @@ class App extends React.PureComponent {
 					
 					filterList = filterList.filter(item => {
 						if (item.name.toLowerCase().match(searchName)) {
-							if (lang !== 'any') {
+							if (lang !== DEFAULT_LANG) {
 								return item.lang === lang;
 							}
 							return item;
@@ -118,7 +126,7 @@ class App extends React.PureComponent {
 					break;
 				/** Sorted by book language and not filled either author name or book title */
 				default:
-					if (lang !== 'any') {
+					if (lang !== DEFAULT_LANG) {
 						filterList = filterList.filter(item => {
 							return item.lang === lang;
 						});
@@ -131,16 +139,16 @@ class App extends React.PureComponent {
 		});
 		
 		/** Remove book */
-		observable.addListener('removeBook', ([index]) => {
+		observable.addListener(REMOVE_BOOK, ([index]) => {
 			this.setState(prevState => ({
 				list: [...prevState.list.filter((_, i) => i !== index)],
 				search: [...prevState.list.filter((_, i) => i !== index)],
 			}));
-			observable.emit('updateListBooks', this.state.list);
+			observable.emit(UPDATE_LIST_BOOKS, this.state.list);
 		});
 		
 		/** Edit info for book */
-		observable.addListener('changeBook', ([index, needle]) => {
+		observable.addListener(EDIT_BOOK, ([index, needle]) => {
 			this.setState(prevState => ({
 				list: [
 					...prevState.list.slice(0, index),
@@ -151,16 +159,16 @@ class App extends React.PureComponent {
 					needle, ...prevState.list.slice(index + 1),
 				],
 			}));
-			observable.emit('updateListBooks', this.state.list);
+			observable.emit(UPDATE_LIST_BOOKS, this.state.list);
 		});
 	}
 	
 	componentWillUnmount() {
-		observable.removeListener('addBook');
-		observable.removeListener('searchBook');
-		observable.removeListener('removeBook');
-		observable.removeListener('changeBook');
-		observable.removeListener('updateListBooks');
+		observable.removeListener(ADD_BOOK);
+		observable.removeListener(SEARCH_BOOK);
+		observable.removeListener(REMOVE_BOOK);
+		observable.removeListener(EDIT_BOOK);
+		observable.removeListener(UPDATE_LIST_BOOKS);
 	}
 }
 

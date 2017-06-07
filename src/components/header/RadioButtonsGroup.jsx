@@ -10,8 +10,8 @@ const RadioButtonsGroup = props => {
 			props.handleAddBookLangChange(event.target.value);
 		}
 		
-		if (props.handleChangeBookLangChange) {
-			props.handleChangeBookLangChange(event.target.value);
+		if (props.handleEditBookLangChange) {
+			props.handleEditBookLangChange(event.target.value);
 		}
 		
 		if (props.handleSearchLangChange) {

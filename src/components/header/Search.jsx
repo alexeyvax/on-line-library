@@ -1,14 +1,15 @@
 import React from 'react';
 import observable from '../../lib/emitter';
-import langList from '../../lib/langList';
+import langList from '../../constants/langList';
 import RadioButtonsGroup from './RadioButtonsGroup.jsx';
+import { SEARCH_BOOK, DEFAULT_LANG } from '../../constants';
 
 /**
  * Search books
  */
 class Search extends React.PureComponent {
 	static defaultProps = {
-		lang: 'any',
+		lang: DEFAULT_LANG,
 	};
 	
 	state = {
@@ -20,7 +21,7 @@ class Search extends React.PureComponent {
 		const { searchAuthor, searchName } = this.refs;
 		
 		observable.emit(
-			'searchBook',
+			SEARCH_BOOK,
 			searchAuthor.value,
 			searchName.value,
 			this.state.lang,
@@ -32,7 +33,7 @@ class Search extends React.PureComponent {
 		
 		this.setState({ lang: lang });
 		observable.emit(
-			'searchBook',
+			SEARCH_BOOK,
 			searchAuthor.value,
 			searchName.value,
 			lang,
