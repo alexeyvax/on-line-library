@@ -5,23 +5,23 @@ import React from 'react';
  */
 class Controls extends React.PureComponent {
 	static defaultProps = {
-		visibility: true,
+		isEditData: false,
 	};
 	
 	state = {
-		visibility: this.props.visibility,
+		isEditData: this.props.isEditData,
 	};
 
 	save = event => {
-		this.setState({ visibility: true });
+		this.setState({ isEditData: false });
 		this.props.saveElement(event);
 	}
 	change = event => {
-		this.setState({ visibility: false });
+		this.setState({ isEditData: true });
 		this.props.changeElement(event);
 	}
 	disable = event => {
-		this.setState({ visibility: true });
+		this.setState({ isEditData: false });
 		this.props.disableElement(event);
 	}
 	remove = event => this.props.removeElement(event);
@@ -29,21 +29,37 @@ class Controls extends React.PureComponent {
 	render() {
 		return (
 			<div className="controls">
-				<button type="button" className="buttonChange" onClick={this.change}>
-					Изменить
+				<button
+					type="button"
+					className="buttonChange"
+					disabled={this.state.isEditData}
+					onClick={this.change}
+				>
+					Edit
 				</button>
-				<button type="button" className="buttonRemove" onClick={this.remove}>
-					Удалить
+				<button
+					type="button"
+					className="buttonRemove"
+					disabled={this.state.isEditData}
+					onClick={this.remove}
+				>
+					Remove
 				</button>
-				<button type="button" className="buttonClose" disabled={this.state.visibility}
+				<button
+					type="button"
+					className="buttonClose"
+					disabled={!this.state.isEditData}
 					onClick={this.disable}
 				>
-					Отменить
+					Cancel
 				</button>
-				<button type="button" className="buttonSave" disabled={this.state.visibility}
+				<button
+					type="button"
+					className="buttonSave"
+					disabled={!this.state.isEditData}
 					onClick={this.save}
 				>
-					Сохранить
+					Save
 				</button>
 			</div>
 		);
