@@ -12,6 +12,7 @@ module.exports.change = function(req, res) {
 			item.author = body['author'];
 			item.name = body['name'];
 			item.description = body['description'];
+			item.lang = body['lang'];
 			indexElement = index;
 			return item;
 		}

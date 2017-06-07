@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Controls from './controls/Controls.jsx';
-// import RadioButtonsGroup from '../header/RadioButtonsGroup.jsx';
-// import langList from '../../lib/langList';
+import RadioButtonsGroup from '../header/RadioButtonsGroup.jsx';
+import langList from '../../lib/langList';
 import ajax from '../../lib/ajax';
 import observable from '../../lib/emitter';
 
@@ -20,6 +20,7 @@ class Item extends React.PureComponent {
 	};
 	
 	state = {
+		lang: this.props.list.lang,
 		content: this.props.content,
 	};
 	
@@ -27,9 +28,10 @@ class Item extends React.PureComponent {
 	save = () => {
 		const { authorInput, nameInput, descriptionInput } = this.refs;
 		const body = {
-			'author': authorInput.value,
-			'name': nameInput.value,
-			'description': descriptionInput.value,
+			author: authorInput.value,
+			name: nameInput.value,
+			description: descriptionInput.value,
+			lang: this.state.lang,
 		};
 		
 		ajax(
@@ -61,59 +63,68 @@ class Item extends React.PureComponent {
 			}
 		);
 	}
-	
-	/*handleLangChange(lang) {
-		console.log(lang);
-		this.setState({
-			lang: lang
-		});
-	}*/
+	/** Change language */
+	handleLangChange = lang => this.setState({ lang: lang });
 	
 	render() {
 		const { id, author, name, imageSrc, description, lang, link } = this.props.list;
-		let changeElements = [];
+		let changeElements = {};
 		
 		if (this.state.content === 'normal') {
-			changeElements = [
-				<p ref="authorP">{author}</p>,
-				<p ref="nameP">{name}</p>,
-				// <p ref="langP">{lang}</p>,
-				<p ref="descriptionP">{description}</p>,
-			];
+			changeElements = {
+				author: <p ref="authorP">{author}</p>,
+				name: <p ref="nameP">{name}</p>,
+				lang: <p ref="langP">{lang}</p>,
+				description: <p ref="descriptionP">{description}</p>,
+			};
 		} else if (this.state.content === 'change') {
-			changeElements = [
-				<input type="text" name="author" defaultValue={author} ref="authorInput" />,
-				<input type="text" name="name" defaultValue={name} ref="nameInput" />,
-				// <RadioButtonsGroup group="changeBook-lang" radios={langList} checked={lang}
-				// 	handleChangeBookLangChange={this.handleLangChange.bind(this)}
-				// />,
-				<input type="text" name="description" defaultValue={description} ref="descriptionInput" />,
-			];
+			changeElements = {
+				author: <input
+					type="text"
+					name="author"
+					defaultValue={author}
+					ref="authorInput" />,
+				name: <input
+					type="text"
+					name="name"
+					defaultValue={name}
+					ref="nameInput" />,
+				lang: <RadioButtonsGroup
+					group="changeBook-lang"
+					radios={langList}
+					checked={this.state.lang}
+					handleChangeBookLangChange={this.handleLangChange}/>,
+				description: <input
+					type="text"
+					name="description"
+					defaultValue={description}
+					ref="descriptionInput"/>,
+			};
 		}
 		
 		return (
 			<div className="container">
 				<img src={imageSrc} />
-				<strong>Автор:</strong>
-				{changeElements[0]}
+				<strong>Author:</strong>
+				{changeElements.author}
 				<br />
-				<strong>Название:</strong>
-				{changeElements[1]}
+				<strong>Title:</strong>
+				{changeElements.name}
 				<br />
-				<strong>Язык книги:</strong>
+				<strong>Lang of book:</strong>
 				<p>{lang}</p>
 				<br />
-				{/*{this.changeElements[2]}*/}
-				<strong>Описание:</strong>
-				{changeElements[2]}
-				<a className="download" href={link} download>Скачать</a>
+				{changeElements.lang}
+				<strong>Description:</strong>
+				{changeElements.description}
+				<a className="download" href={link} download>Download</a>
 				<Controls
 					saveElement={this.save}
 					changeElement={this.change}
 					disableElement={this.disable}
 					removeElement={this.remove}
 				/>
-				<Link to={`/books/${id}`}>Перейти к книге</Link>
+				<Link to={`/books/${id}`}>Go to book</Link>
 				{/*<Link to={`/${name}-${id}`}>Перейти к книге</Link>*/}
 			</div>
 		);

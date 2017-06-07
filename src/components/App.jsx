@@ -160,6 +160,7 @@ class App extends React.PureComponent {
 		observable.removeListener('searchBook');
 		observable.removeListener('removeBook');
 		observable.removeListener('changeBook');
+		observable.removeListener('updateListBooks');
 	}
 }
 
