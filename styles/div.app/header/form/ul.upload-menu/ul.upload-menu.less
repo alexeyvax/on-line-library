@@ -1,5 +1,4 @@
-ul.upload-menu
-{
+ul.upload-menu {
 	@background: lighten(#35435b, 10%);
 	
 	position: absolute;
@@ -21,8 +20,7 @@ ul.upload-menu
 	
 	transition: visibility .3s, opacity .3s;
 	
-	&::before
-	{
+	&::before {
 		position: absolute;
 		top: -20px;
 		right: 40px;
@@ -36,22 +34,18 @@ ul.upload-menu
 		border-bottom: 10px solid @background;
 	}
 	
-	> li
-	{
+	> li {
 		display: block;
 		
 		margin-bottom: 10px;
 		list-style: none;
 		
-		&:last-child
-		{
+		&:last-child {
 			margin-bottom: 0;
 		}
 		
-		&.radio-group
-		{
-			> input
-			{
+		&.radio-group {
+			> input {
 				position: absolute;
 				overflow: hidden;
 				opacity: 0;
@@ -59,8 +53,7 @@ ul.upload-menu
 				height: 1px;
 			}
 
-			> label
-			{
+			> label {
 				position: relative;
 				overflow: visible;
 				width: auto;
@@ -70,8 +63,7 @@ ul.upload-menu
 			}
 		}
 		
-		> input[type='file']
-		{
+		> input[type='file'] {
 			position: absolute;
 			width: 1px;
 			height: 1px;
@@ -79,8 +71,7 @@ ul.upload-menu
 			pointer-events: none;
 		}
 		
-		> input:not([type='file'])
-		{
+		> input:not([type='file']) {
 			display: block;
 			width: 200px;
 			padding: 6px 10px;
@@ -92,8 +83,7 @@ ul.upload-menu
 			box-sizing: border-box;
 		}
 
-		> label
-		{
+		> label {
 			position: absolute;
 			overflow: hidden;
 			width: 1px;
@@ -103,8 +93,7 @@ ul.upload-menu
 			pointer-events: none;
 		}
 		
-		> span
-		{
+		> span {
 			display: block;
 			
 			margin: 20px 0 10px 0;
@@ -113,8 +102,7 @@ ul.upload-menu
 			color: #ffffff;
 		}
 
-		> button
-		{
+		> button {
 			display: block;
 			width: 200px;
 			padding: 6px 10px;
@@ -127,8 +115,7 @@ ul.upload-menu
 			box-sizing: border-box;
 			transition: background-color .3s;
 			
-			&:hover
-			{
+			&:hover {
 				background-color: darken(#30D5C8, 10%);
 			}
 		}

@@ -1,5 +1,4 @@
-ul.list-books
-{
+ul.list-books {
 	@top: 130px;
 	@padding-card: 20px;
 	@image-width: 140px;
@@ -26,8 +25,7 @@ ul.list-books
 
 	box-sizing: border-box;
 
-	> li.book
-	{
+	> li.book {
 		position: relative;
 		z-index: 1;
 		
@@ -41,8 +39,7 @@ ul.list-books
 		
 		box-sizing: border-box;
 		
-		&::before
-		{
+		&::before {
 			position: absolute;
 			top: 0;
 			left: 0;
@@ -61,25 +58,21 @@ ul.list-books
 			transition: transform .3s, box-shadow .3s;
 		}
 		
-		&:target
-		{
+		&:target {
 			z-index: 0;
 			margin: -50px 0 2% 0;
 			border-top: 50px solid transparent;
 			background-clip: padding-box;
 		}
 		
-		&:hover
-		{
-			&::before
-			{
+		&:hover {
+			&::before {
 				box-shadow: 0 0 30px lighten(#000000, 80%);
 				transform: scale(1.02);
 			}
 		}
 		
-		> div.container
-		{
+		> div.container {
 			position: relative;
 			overflow: hidden;
 			
@@ -88,14 +81,12 @@ ul.list-books
 			
 			box-sizing: border-box;
 			
-			> strong
-			{
+			> strong {
 				float: left;
 				margin: 0 10px 0 0;
 			}
 			
-			> input
-			{
+			> input {
 				display: block;
 				width: 100%;
 				max-width: 300px;
@@ -103,8 +94,7 @@ ul.list-books
 				box-sizing: border-box;
 			}
 			
-			> p
-			{
+			> p {
 				padding: 0;
 				margin: 0 0 0 0;
 				font-size: 16px;
@@ -112,8 +102,7 @@ ul.list-books
 				line-height: 1.2;
 			}
 
-			> img
-			{
+			> img {
 				position: absolute;
 				top: 0;
 				left: 0;
@@ -124,8 +113,7 @@ ul.list-books
 				object-fit: contain;
 			}
 			
-			> a.download
-			{
+			> a.download {
 				position: absolute;
 				right: 0;
 				bottom: 0;
@@ -145,14 +133,12 @@ ul.list-books
 				border-radius: @border-radius;
 				transition: background-color .3s;
 				
-				&:hover
-				{
+				&:hover {
 					background-color: lighten(@background-color-controls, 10%);
 				}
 			}
 			
-			> div.controls
-			{
+			> div.controls {
 				position: absolute;
 				left: 0;
 				bottom: 0;
@@ -169,8 +155,7 @@ ul.list-books
 				
 				transition: height .3s, padding .3s;
 				
-				&::before
-				{
+				&::before {
 					position: absolute;
 					top: 0;
 					left: 0;
@@ -190,20 +175,17 @@ ul.list-books
 					transition: visibility .3s, opacity .3s;
 				}
 				
-				&:hover
-				{
+				&:hover {
 					height: 150px;
 					padding-top: 20px;
 					
-					&::before
-					{
+					&::before {
 						visibility: hidden;
 						opacity: 0;
 					}
 				}
 				
-				> button
-				{
+				> button {
 					@height-button: 25px;
 					
 					display: block;
@@ -225,18 +207,15 @@ ul.list-books
 					
 					transition: opacity .3s;
 					
-					&:last-child
-					{
+					&:last-child {
 						margin-bottom: 0;
 					}
 					
-					&:hover
-					{
+					&:hover {
 						background-color: darken(#30D5C8, 10%);
 					}
 					
-					&:disabled
-					{
+					&:disabled {
 						opacity: .5;
 						pointer-events: none;
 					}
@@ -245,8 +224,7 @@ ul.list-books
 		}
 	}
 	
-	> li.empty
-	{
+	> li.empty {
 		display: block;
 		list-style: none;
 	}

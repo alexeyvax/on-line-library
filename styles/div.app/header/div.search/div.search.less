@@ -1,47 +1,40 @@
-div.search
-{
+div.search {
 	position: absolute;
 	top: 40px;
 	right: 300px;
 	
 	display: inline-block;
 	
-	input#search
-	{
+	input#search {
 		position: absolute;
 		overflow: hidden;
 		width: 1px;
 		height: 1px;
 		opacity: 0;
 
-		&:checked ~ label[for='search']
-		{
+		&:checked ~ label[for='search'] {
 			background-color: lighten(#35435b, 10%);
 			
-			&::before
-			{
+			&::before {
 				opacity: 0;
 				transform: translateY(18%);
 				transition: opacity .3s ease-out, transform .3s ease-out;
 			}
 			
-			&::after
-			{
+			&::after {
 				opacity: 1;
 				transform: translateY(0);
 				transition: transform .2s ease-out .1s, opacity .2s ease-out .1s;
 			}
 		}
 
-		&:checked ~ ul.search-menu
-		{
+		&:checked ~ ul.search-menu {
 			visibility: visible;
 			opacity: 1;
 		}
 	}
 
-	label[for='search']
-	{
+	label[for='search'] {
 		position: relative;
 		
 		display: block;
@@ -60,27 +53,23 @@ div.search
 		
 		transition: background-color .2s ease-out .1s;
 		
-		&:hover
-		{
+		&:hover {
 			background-color: lighten(#35435b, 10%);
 			
-			&::before
-			{
+			&::before {
 				opacity: 0;
 				transform: translateY(18%);
 				transition: opacity .3s ease-out, transform .3s ease-out;
 			}
 			
-			&::after
-			{
+			&::after {
 				opacity: 1;
 				transform: translateY(0);
 				transition: transform .2s ease-out .1s, opacity .2s ease-out .1s;
 			}
 		}
 		
-		&::before
-		{
+		&::before {
 			position: absolute;
 			top: 0;
 			right: 0;
@@ -101,8 +90,7 @@ div.search
 			transition: opacity .2s ease-out .1s, transform .2s ease-out .1s;
 		}
 		
-		&::after
-		{
+		&::after {
 			position: absolute;
 			top: 0;
 			right: 0;
