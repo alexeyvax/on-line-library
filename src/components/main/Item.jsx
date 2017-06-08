@@ -74,17 +74,17 @@ class Item extends React.PureComponent {
 	
 	render() {
 		const { id, author, name, imageSrc, description, lang, link } = this.props.data;
-		let changeElements = {};
+		let editElements = {};
 		
 		if (this.state.content === CONTENT_BOOK_DEFAULT) {
-			changeElements = {
+			editElements = {
 				author: <p className="author">{author}</p>,
 				name: <p className="name">{name}</p>,
 				lang: <p className="lang">{lang}</p>,
 				description: <p className="description">{description}</p>,
 			};
 		} else if (this.state.content === CONTENT_BOOK_EDIT) {
-			changeElements = {
+			editElements = {
 				author: <input
 					type="text"
 					name="author"
@@ -102,7 +102,8 @@ class Item extends React.PureComponent {
 					handleEditBookLangChange={this.handleLangChange}/>,
 				description: <textarea
 					name="description"
-					ref="descriptionInput">{description}</textarea>,
+					defaultValue={description}
+					ref="descriptionInput"></textarea>,
 			};
 		}
 		
@@ -110,16 +111,16 @@ class Item extends React.PureComponent {
 			<div className="container">
 				<img src={imageSrc} />
 				<strong>Author:</strong>
-				{changeElements.author}
+				{editElements.author}
 				<br />
 				<strong>Title:</strong>
-				{changeElements.name}
+				{editElements.name}
 				<br />
 				<strong>Language:</strong>
-				{changeElements.lang}
+				{editElements.lang}
 				<br />
 				<strong>Description:</strong>
-				{changeElements.description}
+				{editElements.description}
 				<a className="download" href={link} download>Download</a>
 				<Controls
 					saveElement={this.save}

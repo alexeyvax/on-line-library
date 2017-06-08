@@ -13,7 +13,7 @@ class Main extends React.PureComponent {
 	render() {
 		const { data, searchIsEmpty } = this.props;
 		let bookTemplate;
-		console.log('Main');
+		
 		if (data.length) {
 			bookTemplate = data.map(item => {
 				return (

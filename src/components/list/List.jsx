@@ -21,7 +21,7 @@ class List extends React.PureComponent {
 		let bookTemplate;
 		let countBook;
 		let reverseButton;
-		console.log('List');
+		
 		if (data.length) {
 			bookTemplate = data.map(item => {
 				return (

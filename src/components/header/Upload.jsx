@@ -14,7 +14,7 @@ class Upload extends React.PureComponent {
 		visibility: false,
 		buttonUploadIsDisabled: false,
 	};
-	// TODO при загрузке книги дисейблить кнопку "загрузить"
+	
 	state = {
 		lang: this.props.lang,
 		visibility: this.props.visibility,

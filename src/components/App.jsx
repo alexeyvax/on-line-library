@@ -52,7 +52,7 @@ class App extends React.PureComponent {
 		observable.addListener(ADD_BOOK, item => {
 			this.setState(prevState => ({
 				list: [...prevState.list, item],
-				search: [...prevState.list, item],
+				search: [...prevState.search, item],
 			}));
 			observable.emit(UPDATE_LIST_BOOKS, this.state.list);
 		});
@@ -60,7 +60,7 @@ class App extends React.PureComponent {
 		/** Search book by author and title, and sorting by language */
 		observable.addListener(SEARCH_BOOK, (author, name, lang) => {
 			/** List for search book (mutating) */
-			let filterList = this.state.search;
+			let filterList = this.state.search.slice();
 			/** To lover case author and name book */
 			const searchAuthor = author.trim().toLowerCase();
 			const searchName = name.trim().toLowerCase();
@@ -143,7 +143,7 @@ class App extends React.PureComponent {
 		observable.addListener(REMOVE_BOOK, ([index]) => {
 			this.setState(prevState => ({
 				list: [...prevState.list.filter((_, i) => i !== index)],
-				search: [...prevState.list.filter((_, i) => i !== index)],
+				search: [...prevState.search.filter((_, i) => i !== index)],
 			}));
 			observable.emit(UPDATE_LIST_BOOKS, this.state.list);
 		});
@@ -156,8 +156,8 @@ class App extends React.PureComponent {
 					needle, ...prevState.list.slice(index + 1),
 				],
 				search: [
-					...prevState.list.slice(0, index),
-					needle, ...prevState.list.slice(index + 1),
+					...prevState.search.slice(0, index),
+					needle, ...prevState.search.slice(index + 1),
 				],
 			}));
 			observable.emit(UPDATE_LIST_BOOKS, this.state.list);
