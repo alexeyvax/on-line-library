@@ -14,13 +14,13 @@ gulp.task('styles', () => {
 		}))
 		.pipe(concatCss('style.css'))
 		.pipe(gulp.dest('public/'))
-		// .pipe(cleanCSS({debug: true}, details => {
-		// 	console.log(details.name + ': ' + details.stats.originalSize);
-		// 	console.log(details.name + ': ' + details.stats.minifiedSize);
-		// }))
+		.pipe(cleanCSS({debug: true}, details => {
+			console.log(details.name + ': ' + details.stats.originalSize);
+			console.log(details.name + ': ' + details.stats.minifiedSize);
+		}))
 		.pipe(rename('style.min.css'))
-		.pipe(gulp.dest('public/'));
-		// .pipe(notify('Styles is ready!'));
+		.pipe(gulp.dest('public/'))
+		.pipe(notify('Styles is ready!'));
 });
 
 gulp.task('watch', () => gulp.watch('styles/**/*.less', ['styles']));
