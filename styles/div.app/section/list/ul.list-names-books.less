@@ -1,0 +1,89 @@
+.list-names-books {
+	@header-height: 130px;
+	
+	position: fixed;
+	top: @header-height;
+	left: 0;
+	z-index: 2;
+	
+	display: block;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	-webkit-overflow-scrolling: touch;
+
+	width: 300px;
+	height: calc(~"100% - "@header-height);
+	padding: 80px 40px 40px 40px;
+	margin: 0;
+
+	background-color: #dfdfdf;
+	box-sizing: border-box;
+	
+	&.sticky {
+		position: fixed;
+		top: 0;
+		left: 0;
+	}
+	
+	> li {
+		display: block;
+		margin-bottom: 20px;
+		list-style: none;
+		
+		// &:first-child {
+		// 	position: fixed;
+		// 	display: block;
+		// 	width: 220px;
+		// 	background-color: #dfdfdf;
+		// }
+		
+		&.countBook {
+			
+		}
+		
+		&.reverse-button {
+			button {
+				@height-button: 30px;
+				@border-radius: 6px;
+				@clr-button-text: #ffffff;
+				@background-color-controls: lighten(#35435b, 20%);
+				
+				display: inline-block;
+				
+				height: @height-button;
+				padding: 0 30px;
+				
+				font-size: 14px;
+				text-align: center;
+				text-decoration: none;
+				line-height: @height-button;
+				color: @clr-button-text;
+				cursor: pointer;
+				
+				background-color: @background-color-controls;
+				border-radius: @border-radius;
+				border: none;
+				transition: background-color .3s;
+				
+				&:hover {
+					background-color: lighten(@background-color-controls, 10%);
+				}
+			}
+		}
+		
+		a {
+			display: block;
+			overflow: hidden;
+			width: 100%;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			text-decoration: none;
+			color: grey;
+			transition: color .3s;
+			
+			&:hover {
+				color: darken(grey, 30%);
+			}
+		}
+	}
+}

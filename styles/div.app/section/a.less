@@ -1,0 +1,27 @@
+.download
+{
+	@height-button: 30px;
+	@border-radius: 6px;
+	@clr-button-text: #ffffff;
+	@background-color-controls: lighten(#35435b, 20%);
+	
+	display: inline-block;
+	
+	height: @height-button;
+	padding: 0 30px;
+	
+	font-size: 14px;
+	text-align: center;
+	text-decoration: none;
+	line-height: @height-button;
+	color: @clr-button-text;
+	
+	background-color: @background-color-controls;
+	border: none;
+	border-radius: @border-radius;
+	transition: background-color .3s;
+	
+	&:hover {
+		background-color: lighten(@background-color-controls, 10%);
+	}
+}
