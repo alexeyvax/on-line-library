@@ -1,9 +1,12 @@
-.download
-{
+.go-to-back {
 	@height-button: 30px;
 	@border-radius: 6px;
 	@clr-button-text: #ffffff;
 	@background-color-controls: lighten(#35435b, 20%);
+	
+	position: fixed;
+	top: 20px;
+	left: 20px;
 	
 	display: inline-block;
 	
@@ -12,9 +15,9 @@
 	
 	font-size: 14px;
 	text-align: center;
-	text-decoration: none;
 	line-height: @height-button;
 	color: @clr-button-text;
+	cursor: pointer;
 	
 	background-color: @background-color-controls;
 	border: none;

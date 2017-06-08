@@ -1,4 +1,4 @@
-ul.upload-menu {
+.search-menu {
 	@background: lighten(#35435b, 10%);
 	
 	position: absolute;
@@ -23,7 +23,7 @@ ul.upload-menu {
 	&::before {
 		position: absolute;
 		top: -20px;
-		right: 40px;
+		right: 30px;
 		
 		width: 0;
 		height: 0;
@@ -36,16 +36,10 @@ ul.upload-menu {
 	
 	> li {
 		display: block;
-		
-		margin-bottom: 10px;
 		list-style: none;
-		
-		&:last-child {
-			margin-bottom: 0;
-		}
-		
+
 		&.radio-group {
-			> input {
+			input {
 				position: absolute;
 				overflow: hidden;
 				opacity: 0;
@@ -53,7 +47,7 @@ ul.upload-menu {
 				height: 1px;
 			}
 
-			> label {
+			label {
 				position: relative;
 				overflow: visible;
 				width: auto;
@@ -62,17 +56,8 @@ ul.upload-menu {
 				opacity: 1;
 			}
 		}
-		
-		> input[type='file'] {
-			position: absolute;
-			width: 1px;
-			height: 1px;
-			opacity: 0;
-			pointer-events: none;
-		}
-		
-		> input:not([type='file']) {
-			display: block;
+
+		input {
 			width: 200px;
 			padding: 6px 10px;
 
@@ -83,41 +68,22 @@ ul.upload-menu {
 			box-sizing: border-box;
 		}
 
-		> label {
+		label {
 			position: absolute;
 			overflow: hidden;
 			width: 1px;
 			height: 1px;
 			font-size: 12px;
 			opacity: 0;
-			pointer-events: none;
 		}
 		
-		> span {
+		span {
 			display: block;
 			
 			margin: 20px 0 10px 0;
 			font-size: 14px;
 			text-align: center;
 			color: #ffffff;
-		}
-
-		> button {
-			display: block;
-			width: 200px;
-			padding: 6px 10px;
-			color: white;
-			cursor: pointer;
-			
-			background-color: #30D5C8;
-			border: none;
-			border-radius: 6px;
-			box-sizing: border-box;
-			transition: background-color .3s;
-			
-			&:hover {
-				background-color: darken(#30D5C8, 10%);
-			}
 		}
 	}
 }

@@ -1,8 +1,8 @@
 [
   {
     "author": "ftgyuhj",
-    "name": "ghjseffesfswfesfs",
-    "description": "hyujisfsesf",
+    "name": "ghjseffesfswfesfsgttrthbtfdhg",
+    "description": "hyujisfsesfvhjhbhjvjhvjgvhjv hyujisfsesfvhjhbhjvjhvjgvhjv hyujisfsesfvhjhbhjvjhvjgvhjv hyujisfsesfvhjhbhjvjhvjgvhjv hyujisfsesfvhjhbhjvjhvjgvhjv hyujisfsesfvhjhbhjvjhvjgvhjv hyujisfsesfvhjhbhjvjhvjgvhjv hyujisfsesfvhjhbhjvjhvjgvhjv hyujisfsesfvhjhbhjvjhvjgvhjv hyujisfsesfvhjhbhjvjhvjgvhjv hyujisfsesfvhjhbhjvjhvjgvhjv hyujisfsesfvhjhbhjvjhvjgvhjv hyujisfsesfvhjhbhjvjhvjgvhjv hyujisfsesfvhjhbhjvjhvjgvhjv hyujisfsesfvhjhbhjvjhvjgvhjv hyujisfsesfvhjhbhjvjhvjgvhjv hyujisfsesfvhjhbhjvjhvjgvhjv hyujisfsesfvhjhbhjvjhvjgvhjv hyujisfsesfvhjhbhjvjhvjgvhjv hyujisfsesfvhjhbhjvjhvjgvhjv hyujisfsesfvhjhbhjvjhvjgvhjv hyujisfsesfvhjhbhjvjhvjgvhjv hyujisfsesfvhjhbhjvjhvjgvhjv hyujisfsesfvhjhbhjvjhvjgvhjv hyujisfsesfvhjhbhjvjhvjgvhjv hyujisfsesfvhjhbhjvjhvjgvhjv",
     "lang": "ru",
     "imageSrc": "/books/eloquentjavascript_ru_1496510515088/image.png",
     "link": "/books/eloquentjavascript_ru_1496510515088/eloquentjavascript_ru.pdf",
@@ -12,7 +12,7 @@
     "author": "re5tyse",
     "name": "drftgh",
     "description": "drftghj",
-    "lang": "ru",
+    "lang": "eng",
     "imageSrc": "/books/Pro_React_1496510720052/image.png",
     "link": "/books/Pro_React_1496510720052/Pro_React.pdf",
     "id": 1496510720052
@@ -250,5 +250,23 @@
     "imageSrc": "/books/Algoritmy_Teoria_i_prakticheskoe_primenenie_1496525165736/image.png",
     "link": "/books/Algoritmy_Teoria_i_prakticheskoe_primenenie_1496525165736/Algoritmy_Teoria_i_prakticheskoe_primenenie.pdf",
     "id": 1496525165736
+  },
+  {
+    "author": "scdc",
+    "name": "sadsacsac",
+    "description": "csdx",
+    "lang": "ru",
+    "imageSrc": "/books/JavaScript_1496850500721/image.png",
+    "link": "/books/JavaScript_1496850500721/JavaScript.pdf",
+    "id": 1496850500721
+  },
+  {
+    "author": "sdfrdgbhvn",
+    "name": "sdfgbh",
+    "description": "dfvdbgndfgbfgb df",
+    "lang": "ru",
+    "imageSrc": "/books/Nikolas_Zakas_-_JavaScript_dlya_professionalnykh_veb-razrabotchikov_3-e_izd__-_2015_1496902967408/image.png",
+    "link": "/books/Nikolas_Zakas_-_JavaScript_dlya_professionalnykh_veb-razrabotchikov_3-e_izd__-_2015_1496902967408/Nikolas_Zakas_-_JavaScript_dlya_professionalnykh_veb-razrabotchikov_3-e_izd__-_2015.pdf",
+    "id": 1496902967408
   }
 ]

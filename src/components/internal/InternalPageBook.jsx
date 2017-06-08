@@ -17,7 +17,8 @@ const InternalPageBook = (...props) => {
 	return (
 		<section className="internal-page">
 			{/*<a href={`/#${id}`}>Вернуться назад</a>*/}
-			<button onClick={goToBack}>Go to back</button>
+			<button className="go-to-back" onClick={goToBack}>Go to back</button>
+			<br />
 			<img src={imageSrc} />
 			<strong>Author:</strong>
 			<p>{author}</p>

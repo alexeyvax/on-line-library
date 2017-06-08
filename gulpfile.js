@@ -13,12 +13,12 @@ gulp.task('styles', () => {
 			paths: [path.join(__dirname, 'less', 'includes')],
 		}))
 		.pipe(concatCss('style.css'))
-		// .pipe(gulp.dest('public/'))
+		.pipe(gulp.dest('public/'))
 		// .pipe(cleanCSS({debug: true}, details => {
 		// 	console.log(details.name + ': ' + details.stats.originalSize);
 		// 	console.log(details.name + ': ' + details.stats.minifiedSize);
 		// }))
-		// .pipe(rename('style.min.css'))
+		.pipe(rename('style.min.css'))
 		.pipe(gulp.dest('public/'));
 		// .pipe(notify('Styles is ready!'));
 });

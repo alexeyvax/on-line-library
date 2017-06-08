@@ -24,7 +24,8 @@ module.exports.upload = function(req, res) {
 		const translationNameToTranslit = libToTranslite.toTranslite(
 			shortenNameWithFirstAndLastElements);
 		const createUniqueNumber = Math.round(Math.random() * CONVERT_NUMBER) + Date.now();
-		const nameForCreatedDir = translationNameToTranslit.replace(/\.[^.]+$/, '') + '_' + createUniqueNumber;
+		const nameForCreatedDir = translationNameToTranslit.replace(/\.[^.]+$/, '')
+			+ '_' + createUniqueNumber;
 		const wayToCreatedDir = `books/${nameForCreatedDir}`;
 		const wayToUploadPdf = `${wayToCreatedDir}/${translationNameToTranslit}`;
 		

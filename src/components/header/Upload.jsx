@@ -76,7 +76,7 @@ class Upload extends React.PureComponent {
 		return (
 			<form
 				method="post"
-				action="/api/uploa"
+				action="/api/upload"
 				encType="multipart/form-data"
 				ref="form"
 			>

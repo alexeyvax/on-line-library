@@ -1,4 +1,4 @@
-ul.list-books {
+.list-books {
 	@top: 130px;
 	@padding-card: 20px;
 	@image-width: 140px;
@@ -25,7 +25,7 @@ ul.list-books {
 
 	box-sizing: border-box;
 
-	> li.book {
+	> .book {
 		position: relative;
 		z-index: 1;
 		
@@ -72,7 +72,7 @@ ul.list-books {
 			}
 		}
 		
-		> div.container {
+		> .container {
 			position: relative;
 			overflow: hidden;
 			
@@ -81,12 +81,13 @@ ul.list-books {
 			
 			box-sizing: border-box;
 			
-			> strong {
+			strong {
 				float: left;
 				margin: 0 10px 0 0;
 			}
 			
-			> input {
+			input,
+			textarea {
 				display: block;
 				width: 100%;
 				max-width: 300px;
@@ -94,15 +95,24 @@ ul.list-books {
 				box-sizing: border-box;
 			}
 			
-			> p {
+			textarea {
+				min-height: 150px;
+			}
+			
+			p {
+				overflow: hidden;
 				padding: 0;
 				margin: 0 0 0 0;
 				font-size: 16px;
 				color: grey;
 				line-height: 1.2;
+				
+				&.description {
+					max-height: 1em * 1.2 * 5;
+				}
 			}
 
-			> img {
+			img {
 				position: absolute;
 				top: 0;
 				left: 0;
@@ -113,7 +123,18 @@ ul.list-books {
 				object-fit: contain;
 			}
 			
-			> a.download {
+			.radio-set {
+				width: 200px;
+				
+				> li {
+					input:checked ~ label {
+						color: #999999;
+					}
+				}
+			}
+			
+			.go-to-book,
+			.download {
 				position: absolute;
 				right: 0;
 				bottom: 0;
@@ -138,7 +159,11 @@ ul.list-books {
 				}
 			}
 			
-			> div.controls {
+			.download {
+				right: 140px;
+			}
+			
+			> .controls {
 				position: absolute;
 				left: 0;
 				bottom: 0;
@@ -166,7 +191,7 @@ ul.list-books {
 					width: 100%;
 					height: @height-button;
 					
-					content: 'Настройки';
+					content: 'Settings';
 					font-size: 14px;
 					text-align: center;
 					line-height: @height-button;
@@ -185,7 +210,7 @@ ul.list-books {
 					}
 				}
 				
-				> button {
+				button {
 					@height-button: 25px;
 					
 					display: block;
@@ -224,7 +249,7 @@ ul.list-books {
 		}
 	}
 	
-	> li.empty {
+	> .empty {
 		display: block;
 		list-style: none;
 	}

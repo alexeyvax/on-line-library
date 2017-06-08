@@ -24,12 +24,12 @@ class List extends React.PureComponent {
 				);}
 			);
 			countBook = <li className="countBook">
-							<strong>Всего книг: {data.length}</strong>
+							<strong>Total books: {data.length}</strong>
 						</li>;
 		} else {
 			bookTemplate = (searchIsEmpty)
-				? <li className="empty">Пока ещё нет книг</li>
-				: <li className="empty">Совпадений не найдено</li>;
+				? <li className="empty">No books yet</li>
+				: <li className="empty">No matches found</li>;
 		}
 		return (
 			<ul className="list-names-books">

@@ -78,10 +78,10 @@ class Item extends React.PureComponent {
 		
 		if (this.state.content === CONTENT_BOOK_DEFAULT) {
 			changeElements = {
-				author: <p ref="authorP">{author}</p>,
-				name: <p ref="nameP">{name}</p>,
-				lang: <p ref="langP">{lang}</p>,
-				description: <p ref="descriptionP">{description}</p>,
+				author: <p className="author">{author}</p>,
+				name: <p className="name">{name}</p>,
+				lang: <p className="lang">{lang}</p>,
+				description: <p className="description">{description}</p>,
 			};
 		} else if (this.state.content === CONTENT_BOOK_EDIT) {
 			changeElements = {
@@ -100,11 +100,9 @@ class Item extends React.PureComponent {
 					radios={langList}
 					checked={this.state.lang}
 					handleEditBookLangChange={this.handleLangChange}/>,
-				description: <input
-					type="text"
+				description: <textarea
 					name="description"
-					defaultValue={description}
-					ref="descriptionInput"/>,
+					ref="descriptionInput">{description}</textarea>,
 			};
 		}
 		
@@ -117,10 +115,9 @@ class Item extends React.PureComponent {
 				<strong>Title:</strong>
 				{changeElements.name}
 				<br />
-				<strong>Lang of book:</strong>
-				<p>{lang}</p>
-				<br />
+				<strong>Language:</strong>
 				{changeElements.lang}
+				<br />
 				<strong>Description:</strong>
 				{changeElements.description}
 				<a className="download" href={link} download>Download</a>
@@ -130,7 +127,7 @@ class Item extends React.PureComponent {
 					disableElement={this.disable}
 					removeElement={this.remove}
 				/>
-				<Link to={`/books/${id}`}>Go to book</Link>
+				<Link to={`/books/${id}`} className="go-to-book">Go to book</Link>
 				{/*<Link to={`/${name}-${id}`}>Перейти к книге</Link>*/}
 			</div>
 		);
