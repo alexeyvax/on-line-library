@@ -21,7 +21,7 @@ class App extends React.PureComponent {
 	static propTypes = {
 		listBooks: React.PropTypes.array.isRequired,
 	};
-	// TODO разобраться с 2 одинаковыми переменными в state
+	
 	state = {
 		list: this.props.listBooks,
 		search: this.props.listBooks,
