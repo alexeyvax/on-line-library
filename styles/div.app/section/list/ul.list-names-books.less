@@ -13,7 +13,7 @@
 
 	width: 300px;
 	height: calc(~"100% - "@header-height);
-	padding: 50px 40px 40px 40px;
+	padding: 80px 40px 40px 40px;
 	margin: 0;
 
 	background-color: #dfdfdf;
@@ -30,9 +30,55 @@
 		margin-bottom: 20px;
 		list-style: none;
 		
+		// &:first-child {
+		// 	position: fixed;
+		// 	display: block;
+		// 	width: 220px;
+		// 	background-color: #dfdfdf;
+		// }
+		
+		&.countBook {
+			
+		}
+		
+		&.reverse-button {
+			button {
+				@height-button: 30px;
+				@border-radius: 6px;
+				@clr-button-text: #ffffff;
+				@background-color-controls: lighten(#35435b, 20%);
+				
+				display: inline-block;
+				
+				height: @height-button;
+				padding: 0 30px;
+				
+				font-size: 14px;
+				text-align: center;
+				text-decoration: none;
+				line-height: @height-button;
+				color: @clr-button-text;
+				cursor: pointer;
+				
+				background-color: @background-color-controls;
+				border-radius: @border-radius;
+				border: none;
+				transition: background-color .3s;
+				
+				&:hover {
+					background-color: lighten(@background-color-controls, 10%);
+				}
+			}
+		}
+		
 		a {
-			color: grey;
+			display: block;
+			overflow: hidden;
+			width: 100%;
+			white-space: nowrap;
+			text-overflow: ellipsis;
 			text-decoration: none;
+			color: grey;
 			transition: color .3s;
 			
 			&:hover {

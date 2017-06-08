@@ -21,12 +21,12 @@ class Item extends React.PureComponent {
 	};
 
 	static propTypes = {
-		list: React.PropTypes.object,
+		data: React.PropTypes.object,
 		itemId: React.PropTypes.number,
 	};
 	
 	state = {
-		lang: this.props.list.lang,
+		lang: this.props.data.lang,
 		content: this.props.content,
 	};
 	
@@ -73,7 +73,7 @@ class Item extends React.PureComponent {
 	handleLangChange = lang => this.setState({ lang: lang });
 	
 	render() {
-		const { id, author, name, imageSrc, description, lang, link } = this.props.list;
+		const { id, author, name, imageSrc, description, lang, link } = this.props.data;
 		let changeElements = {};
 		
 		if (this.state.content === CONTENT_BOOK_DEFAULT) {

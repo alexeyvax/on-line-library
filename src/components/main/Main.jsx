@@ -11,15 +11,14 @@ class Main extends React.PureComponent {
 	};
 	
 	render() {
-		const list = this.props.data;
-		const searchIsEmpty = this.props.searchIsEmpty;
+		const { data, searchIsEmpty } = this.props;
 		let bookTemplate;
 		console.log('Main');
-		if (list.length) {
-			bookTemplate = list.map(item => {
+		if (data.length) {
+			bookTemplate = data.map(item => {
 				return (
 					<li id={item.id} className="book" key={item.id}>
-						<Item list={item} itemId={item.id} />
+						<Item data={item} itemId={item.id} />
 					</li>
 				);}
 			);

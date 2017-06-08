@@ -11,6 +11,7 @@ import {
 	SEARCH_BOOK,
 	UPDATE_LIST_BOOKS,
 	DEFAULT_LANG,
+	REVERSE_LIST_BOOKS,
 } from '../constants';
 
 /**
@@ -161,6 +162,11 @@ class App extends React.PureComponent {
 			}));
 			observable.emit(UPDATE_LIST_BOOKS, this.state.list);
 		});
+		
+		/** Reverse list of books */
+		observable.addListener(REVERSE_LIST_BOOKS, reverseListBooks => {
+			this.setState({ list: reverseListBooks });
+		});
 	}
 	
 	componentWillUnmount() {
@@ -169,6 +175,7 @@ class App extends React.PureComponent {
 		observable.removeListener(REMOVE_BOOK);
 		observable.removeListener(EDIT_BOOK);
 		observable.removeListener(UPDATE_LIST_BOOKS);
+		observable.removeListener(REVERSE_LIST_BOOKS);
 	}
 }
 

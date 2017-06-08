@@ -1,5 +1,7 @@
 import React from 'react';
 import Item from './Item';
+import observable from '../../lib/emitter';
+import { REVERSE_LIST_BOOKS } from '../../constants';
 
 /**
  * Section with list of titles of books
@@ -10,10 +12,15 @@ class List extends React.PureComponent {
 		searchIsEmpty: React.PropTypes.bool.isRequired,
 	};
 	
+	reverseListBooks = () => {
+		observable.emit(REVERSE_LIST_BOOKS, this.props.data.slice().reverse());
+	}
+	
 	render() {
 		const { data, searchIsEmpty } = this.props;
 		let bookTemplate;
 		let countBook;
+		let reverseButton;
 		console.log('List');
 		if (data.length) {
 			bookTemplate = data.map(item => {
@@ -26,6 +33,11 @@ class List extends React.PureComponent {
 			countBook = <li className="countBook">
 							<strong>Total books: {data.length}</strong>
 						</li>;
+			reverseButton = <li className="reverse-button">
+								<button onClick={this.reverseListBooks}>
+									Reverse list books
+								</button>
+							</li>;
 		} else {
 			bookTemplate = (searchIsEmpty)
 				? <li className="empty">No books yet</li>
@@ -33,7 +45,8 @@ class List extends React.PureComponent {
 		}
 		return (
 			<ul className="list-names-books">
-				{countBook}
+				{reverseButton ? reverseButton : null}
+				{countBook ? countBook : null}
 				{bookTemplate}
 			</ul>
 		);
