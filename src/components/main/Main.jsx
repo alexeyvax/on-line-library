@@ -24,8 +24,8 @@ class Main extends React.PureComponent {
 			);
 		} else {
 			bookTemplate = (searchIsEmpty)
-				? <li className="empty">No books yet</li>
-				: <li className="empty">No matches found</li>;
+				? <li className="empty">No matches found</li>
+				: <li className="empty">No books yet</li>;
 		}
 		
 		return <ul className="list-books">{bookTemplate}</ul>;
