@@ -40,8 +40,8 @@ class List extends React.PureComponent {
 							</li>;
 		} else {
 			bookTemplate = (searchIsEmpty)
-				? <li className="empty">No books yet</li>
-				: <li className="empty">No matches found</li>;
+				? <li className="empty">No matches found</li>
+				: <li className="empty">No books yet</li>;
 		}
 		return (
 			<ul className="list-names-books">

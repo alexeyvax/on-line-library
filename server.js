@@ -44,4 +44,6 @@ app.route('/api/books/:id')
 	.put(bpjson, changeDataController.change)
 	.delete(removeDataController.remove);
 
+/* eslint-disable no-console */
 app.listen(port, () => console.log('Server started: http://localhost:3004/'));
+/* eslint-enable no-console */

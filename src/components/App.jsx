@@ -72,8 +72,6 @@ class App extends React.PureComponent {
 			switch (true) {
 				/** If the author's name and book title are filled */
 				case authorLength > 0 && nameLength > 0:
-					searchIsEmpty = true;
-					
 					filterList = filterList.filter(item => {
 						if (item.author.toLowerCase().match(searchAuthor)
 							&& item.name.toLowerCase().match(searchName)) {
@@ -83,16 +81,11 @@ class App extends React.PureComponent {
 							return item;
 						}
 					});
-					
-					if (filterList.length <= 0) {
-						searchIsEmpty = false;
-					}
+					searchIsEmpty = (filterList.length <= 0);
 					
 					break;
 				/** If only the author`s name is filled */
 				case authorLength > 0 && !nameLength > 0:
-					searchIsEmpty = true;
-					
 					filterList = filterList.filter(item => {
 						if (item.author.toLowerCase().match(searchAuthor)) {
 							if (lang !== DEFAULT_LANG) {
@@ -101,16 +94,11 @@ class App extends React.PureComponent {
 							return item;
 						}
 					});
-					
-					if (filterList.length <= 0) {
-						searchIsEmpty = false;
-					}
+					searchIsEmpty = (filterList.length <= 0);
 					
 					break;
 				/** If only the title of book is filled */
 				case !authorLength > 0 && nameLength > 0:
-					searchIsEmpty = true;
-					
 					filterList = filterList.filter(item => {
 						if (item.name.toLowerCase().match(searchName)) {
 							if (lang !== DEFAULT_LANG) {
@@ -119,10 +107,7 @@ class App extends React.PureComponent {
 							return item;
 						}
 					});
-					
-					if (filterList.length <= 0) {
-						searchIsEmpty = false;
-					}
+					searchIsEmpty = (filterList.length <= 0);
 					
 					break;
 				/** Sorted by book language and not filled either author name or book title */
@@ -132,6 +117,7 @@ class App extends React.PureComponent {
 							return item.lang === lang;
 						});
 					}
+					searchIsEmpty = (filterList.length <= 0);
 			}
 			this.setState({
 				list: filterList,

@@ -5,6 +5,7 @@ public
 
 backend/listBooks.json
 
+books/*
 __tests__
 .vscode
 

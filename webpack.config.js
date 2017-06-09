@@ -24,6 +24,7 @@ module.exports = {
 			},
 		],
 	},
+	/* eslint-disable camelcase */
 	plugins: [
 		new webpack.optimize.UglifyJsPlugin({
 			mangle: true,
@@ -36,8 +37,9 @@ module.exports = {
 				unused: true,
 				if_return: true,
 				join_vars: true,
-				drop_console: true
+				drop_console: true,
 			}
-		})
+		}),
 	],
+	/* eslint-enable camelcase */
 };
