@@ -37,7 +37,6 @@ class App extends React.PureComponent {
 				<List
 					data={list}
 					searchIsEmpty={searchIsEmpty}
-					ref="list"
 				/>
 				<Main
 					data={list}
