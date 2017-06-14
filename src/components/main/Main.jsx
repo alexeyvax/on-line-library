@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Item from './Item';
 
 /**
@@ -6,8 +7,8 @@ import Item from './Item';
  */
 class Main extends React.PureComponent {
 	static propTypes = {
-		data: React.PropTypes.array.isRequired,
-		searchIsEmpty: React.PropTypes.bool.isRequired,
+		data: PropTypes.array.isRequired,
+		searchIsEmpty: PropTypes.bool.isRequired,
 	};
 	
 	render() {

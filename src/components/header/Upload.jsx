@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import observable from '../../lib/emitter';
 import langList from '../../constants/langList';
 import ajax from '../../lib/ajax';
@@ -13,6 +14,12 @@ class Upload extends React.PureComponent {
 		lang: DEFAULT_LANG,
 		visibility: false,
 		buttonUploadIsDisabled: false,
+	};
+	
+	static propTypes = {
+		lang: PropTypes.string.isRequired,
+		visibility: PropTypes.bool.isRequired,
+		buttonUploadIsDisabled: PropTypes.bool.isRequired,
 	};
 	
 	state = {

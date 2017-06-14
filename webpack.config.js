@@ -38,7 +38,7 @@ module.exports = {
 				if_return: true,
 				join_vars: true,
 				drop_console: true,
-			}
+			},
 		}),
 	],
 	/* eslint-enable camelcase */

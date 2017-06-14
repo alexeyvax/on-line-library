@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 /**
  * Book control buttons
@@ -6,6 +7,14 @@ import React from 'react';
 class Controls extends React.PureComponent {
 	static defaultProps = {
 		isEditData: false,
+	};
+	
+	static propTypes = {
+		saveElement: PropTypes.func.isRequired,
+		changeElement: PropTypes.func.isRequired,
+		disableElement: PropTypes.func.isRequired,
+		removeElement: PropTypes.func.isRequired,
+		isEditData: PropTypes.bool.isRequired,
 	};
 	
 	state = {

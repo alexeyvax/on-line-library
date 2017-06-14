@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import observable from '../../lib/emitter';
 import langList from '../../constants/langList';
 import RadioButtonsGroup from './RadioButtonsGroup.jsx';
@@ -10,6 +11,10 @@ import { SEARCH_BOOK, DEFAULT_LANG } from '../../constants';
 class Search extends React.PureComponent {
 	static defaultProps = {
 		lang: DEFAULT_LANG,
+	};
+	
+	static propTypes = {
+		lang: PropTypes.string.isRequired,
 	};
 	
 	state = {

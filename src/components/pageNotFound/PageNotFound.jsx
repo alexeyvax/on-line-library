@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const PageNotFound = ({ location }) => {
 	// console.log(location);
@@ -10,6 +11,10 @@ const PageNotFound = ({ location }) => {
 			{/*<button onClick={}>Back to main page</button>*/}
 		</div>
 	);
+};
+
+PageNotFound.propTypes = {
+	location: PropTypes.object.isRequired,
 };
 
 export default PageNotFound;
