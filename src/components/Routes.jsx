@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
 	BrowserRouter as Router,
 	Route,
@@ -44,6 +45,10 @@ const Routes = props => {
 			</div>
 		</Router>
 	);
+};
+
+Routes.propTypes = {
+	listBooks: PropTypes.array.isRequired,
 };
 
 export default Routes;

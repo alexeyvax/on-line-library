@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 /**
  * Internal page with the selected book
@@ -34,6 +35,12 @@ const InternalPageBook = (...props) => {
 			<a className="download" href={link} download>download</a>
 		</section>
 	);
+};
+
+InternalPageBook.propTypes = {
+	listBooks: PropTypes.array.isRequired,
+	match: PropTypes.object.isRequired,
+	history: PropTypes.object.isRequired,
 };
 
 export default InternalPageBook;

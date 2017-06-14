@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Controls from './controls/Controls.jsx';
 import RadioButtonsGroup from '../header/RadioButtonsGroup.jsx';
@@ -21,8 +22,8 @@ class Item extends React.PureComponent {
 	};
 
 	static propTypes = {
-		data: React.PropTypes.object,
-		itemId: React.PropTypes.number,
+		data: PropTypes.object,
+		itemId: PropTypes.number,
 	};
 	
 	state = {

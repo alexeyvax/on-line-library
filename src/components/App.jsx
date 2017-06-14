@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import observable from '../lib/emitter';
 import Header from './header/Header.jsx';
 import List from './list/List.jsx';
@@ -19,7 +20,7 @@ import {
  */
 class App extends React.PureComponent {
 	static propTypes = {
-		listBooks: React.PropTypes.array.isRequired,
+		listBooks: PropTypes.array.isRequired,
 	};
 	
 	state = {
@@ -34,15 +35,8 @@ class App extends React.PureComponent {
 		return (
 			<section>
 				<Header />
-				<List
-					data={list}
-					searchIsEmpty={searchIsEmpty}
-					ref="list"
-				/>
-				<Main
-					data={list}
-					searchIsEmpty={searchIsEmpty}
-				/>
+				<List data={list} searchIsEmpty={searchIsEmpty} />
+				<Main data={list} searchIsEmpty={searchIsEmpty} />
 			</section>
 		);
 	}

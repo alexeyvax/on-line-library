@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Item from './Item';
 import observable from '../../lib/emitter';
 import { REVERSE_LIST_BOOKS } from '../../constants';
@@ -8,8 +9,8 @@ import { REVERSE_LIST_BOOKS } from '../../constants';
  */
 class List extends React.PureComponent {
 	static propTypes = {
-		data: React.PropTypes.array.isRequired,
-		searchIsEmpty: React.PropTypes.bool.isRequired,
+		data: PropTypes.array.isRequired,
+		searchIsEmpty: PropTypes.bool.isRequired,
 	};
 	
 	reverseListBooks = () => {
