@@ -2,7 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 
 import RadioButtonsGroup from '../../../components/header/RadioButtonsGroup.jsx';
-import langList from '../../../../mocks/header/langList';
+import langList from '../../../../mocks/langList';
 import { DEFAULT_LANG, TEST_GROUP } from '../../../../mocks/variables';
 
 describe('RadioButtonsGroup', () => {

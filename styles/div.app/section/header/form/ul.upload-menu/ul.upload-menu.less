@@ -63,6 +63,37 @@
 			}
 		}
 		
+		#dropbox {
+			width: 100%;
+			min-height: 50px;
+			height: auto;
+			padding: 6px 10px;
+			font-size: 14px;
+			background-color: white;
+			box-sizing: border-box;
+			border-radius: 6px;
+			box-shadow: 0 0 0 transparent inset;
+			border: 1px solid lighten(purple, 40%);
+			transition: box-shadow .3s;
+			
+			&:hover {
+				box-shadow: 0 0 4px rgba(255, 0, 0, 1) inset;
+			}
+			
+			span {
+				overflow: hidden;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				margin: 0 0 10px 0;
+				color: grey;
+				text-align: left;
+				
+				&:first-of-type {
+					margin-top: 20px;
+				}
+			}
+		}
+		
 		> input[type='file'] {
 			position: absolute;
 			width: 1px;
