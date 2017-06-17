@@ -12,38 +12,37 @@ import { ADD_BOOK, PDF_EXTANTION, DEFAULT_LANG } from '../../constants';
 class Upload extends React.PureComponent {
 	static defaultProps = {
 		lang: DEFAULT_LANG,
-		visibility: false,
-		buttonUploadIsDisabled: false,
 	};
 	
 	static propTypes = {
 		lang: PropTypes.string.isRequired,
-		visibility: PropTypes.bool.isRequired,
-		buttonUploadIsDisabled: PropTypes.bool.isRequired,
 	};
 	
 	state = {
+		files: {},
 		lang: this.props.lang,
-		visibility: this.props.visibility,
-		buttonUploadIsDisabled: this.props.buttonUploadIsDisabled,
+		buttonUploadIsDisabled: false,
 	};
 	
 	/** Call the window to upload a new book */
 	callUploadInput = () => this.refs.upload.click();
+	/** Change data in upload element */
+	changeUploadInput = () => 
+		this.setState({ files: this.refs.upload.files });
 	/** Change language */
 	handleLangChange = lang => this.setState({ lang: lang });
 	/** Upload new book */
 	dataSubmit = event => {
 		event.preventDefault();
 		const { lang } = this.state;
-		const { form, upload, author, name, description } = this.refs;
+		const { form, author, name, description } = this.refs;
 		const { method, action } = form;
+		const fileList = this.state.files;
 		
-		if (upload.value
+		if (fileList.length
 			&& author.value
 			&& name.value
 			&& description.value) {
-			const fileList = upload.files;
 			const formData = new FormData();
 			let typeBookIsPdf = true;
 			
@@ -67,17 +66,47 @@ class Upload extends React.PureComponent {
 					observable.emit(ADD_BOOK, JSON.parse(response));
 					form.reset();
 					this.setState({
+						files: {},
 						lang: DEFAULT_LANG,
 						buttonUploadIsDisabled: false,
 					});
 				});
 			} else {
-				alert('Please download the book in the format .pdf');
+				alert('Please download the book with format .pdf');
 			}
 		} else {
 			alert('Please fill in all required fields');
 		}
 	}
+	dragOverHandler = e => e.preventDefault();
+	/** Update state when file is drop */
+	dropHandler = (e) => {
+		e.preventDefault();
+		this.setState({ files: e.dataTransfer.files });
+	}
+	/** Output name and size uploaded file */
+	namesOfBooks = () => {
+		const currentElement = this.state.files[0];
+		const formatBytes = (size, b) => {
+			if(size === 0) {
+				return 0;
+			}
+			const base = 1e3;
+			const round = b || 2;
+			const extentions = ['Bytes','KB','MB','GB'];
+			const indexExtention = Math.floor(Math.log(size) / Math.log(base));
+			
+			return `${parseFloat((size / Math.pow(base, indexExtention)).toFixed(round))} 
+				${extentions[indexExtention]}`;
+		};
+
+		return (
+			<div>
+				<span>{currentElement.name}</span>
+				<span>size: {formatBytes(currentElement.size)}</span>
+			</div>
+		);
+	};
 	
 	render() {
 		return (
@@ -100,14 +129,18 @@ class Upload extends React.PureComponent {
 							name="uploads[]"
 							placeholder="Upload your file"
 							multiple="multiple" ref="upload"
+							onChange={this.changeUploadInput}
 						/>
 						<label>Upload new book in format PDF</label>
-						<button
-							type="button"
+						<div
+							id='dropbox'
+							onDrop={this.dropHandler}
+							onDragOver={this.dragOverHandler}
 							onClick={this.callUploadInput}
 						>
-							Select *
-						</button>
+							Drop your file here, or click to upload *
+							{this.state.files.length ? this.namesOfBooks() : null}
+						</div>
 					</li><li>
 						<input
 							type="text"

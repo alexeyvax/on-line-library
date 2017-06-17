@@ -7,7 +7,7 @@
   "homepage": "https://github.com/alexeyvax/on-line-library",
   "main": "server.js",
   "scripts": {
-    "start": "npm run build && npm run styles && node server.js ",
+    "start": "npm run build && npm run styles && npm run test && node server.js ",
     "server": "node server.js ",
     "dev": "NODE_ENV=development webpack-dev-server --progress",
     "build": "NODE_ENV=production webpack --progress",
